@@ -9,8 +9,11 @@ public class PlayerScript : MonoBehaviour
     float inputVertical;
     Rigidbody rb;
 
+    [SerializeField]
     float moveSpeed = 15.0f;
+    [SerializeField]
     float slowMoveSpeed = 5.0f;
+
     GameObject UpperBody;
 
 
@@ -30,7 +33,8 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        //キーボードのWASDとコントローラーの左スティックから入力を取るやつ
+        inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
 
 
@@ -60,9 +64,11 @@ public class PlayerScript : MonoBehaviour
 
         }
 
-        transform.rotation = Quaternion.LookRotation(moveForward);
+        if (moveForward != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(moveForward);
 
-
+        }
     }
 
 }
