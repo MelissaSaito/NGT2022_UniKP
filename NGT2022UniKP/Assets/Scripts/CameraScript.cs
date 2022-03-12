@@ -9,6 +9,7 @@ public class CameraScript : MonoBehaviour
     Vector3 targetPos;
 
     //回転させるスピード
+    [SerializeField]
     private float rotateSpeed = 0.5f;
 
 
@@ -28,12 +29,24 @@ public class CameraScript : MonoBehaviour
         // targetの移動量分、自分（カメラ）も移動する
         transform.position += targetObj.transform.position - targetPos;
 
-        //transform.position = pos;
 
         targetPos = targetObj.transform.position;
 
         //回転させる角度
-        float angle = Input.GetAxis("Horizontal") * rotateSpeed;
+        float angle = 0;
+        if (Input.GetKey(KeyCode.L))
+        {
+            angle = 1 * rotateSpeed;
+        }
+        if (Input.GetKey(KeyCode.J))
+        {
+            angle = -1 * rotateSpeed;
+        }
+        if(Input.GetKey(KeyCode.L) && Input.GetKey(KeyCode.J))
+        {
+            angle = 0;
+        }
+
 
         //プレイヤー中心で回転
         transform.RotateAround(targetPos, Vector3.up, angle);
