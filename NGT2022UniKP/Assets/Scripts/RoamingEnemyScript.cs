@@ -1,0 +1,60 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+[RequireComponent(typeof(NavMeshAgent))]
+public class RoamingEnemyScript : MonoBehaviour
+{
+    [SerializeField][Tooltip("巡回する地点の配列")] private Transform[] waypoints;
+    private NavMeshAgent navMeshAgent;
+    private int currentWaypointIndex;
+    private int enemySpeed = 5;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.speed = enemySpeed;
+        // 最初の目的地を入れる
+        navMeshAgent.SetDestination(waypoints[0].position);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // 目的地点までの距離(remainingDistance)が目的地の手前までの距離(stoppingDistance)以下になったら
+        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+        {
+            // 目的地の番号を１更新（右辺を剰余演算子にすることで目的地をループさせれる）
+            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            // 目的地を次の場所に設定
+            navMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
+        }
+    }
+
+    //Playerを発見した時
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("発見した!!");
+            navMeshAgent.speed = 0;
+        }
+    }
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            navMeshAgent.speed = 0;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            navMeshAgent.speed = enemySpeed;
+        }
+    }
+}
