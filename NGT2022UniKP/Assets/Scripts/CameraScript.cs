@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-
     GameObject targetObj;
     Vector3 targetPos;
 
