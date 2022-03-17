@@ -40,6 +40,9 @@ public class EnemyRayScript : MonoBehaviour
 
     private bool isFounded = false;//見つかる判定
 
+    [SerializeField] GameObject playerRockScript;
+
+
 
     //enemyからplayerまで光線を出す
     private void FixedUpdate()
@@ -71,14 +74,21 @@ public class EnemyRayScript : MonoBehaviour
             //対象のtagがplayerだったら見つかったと画面に表示する。
             if (isTrigger == true && hit.collider.gameObject.tag == ("Player"))
             {
-                isFounded = true;
-                if (talk2 == true)
+                //////ここ追加フラッシュの有無
+                if (playerRockScript.GetComponent<PlayerLockScript>().getFlash() == false)
                 {
-                    StartCoroutine("Message", message2);// Messageコルーチンを実行する
-                    messageScript.talkflag = true;
-                    talk2 = false;
+                    isFounded = true;
+                    if (talk2 == true)
+                    {
+                        StartCoroutine("Message", message2);// Messageコルーチンを実行する
+                        messageScript.talkflag = true;
+                        talk2 = false;
+                    }
                 }
+                else
+                {
 
+                }
             }
             else
             {
