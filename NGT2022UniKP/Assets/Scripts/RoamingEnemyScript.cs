@@ -9,7 +9,7 @@ public class RoamingEnemyScript : MonoBehaviour
     [SerializeField] [Tooltip("„‰ñ‚·‚é’n“_‚Ì”z—ñ")] private Transform[] waypoints;
     private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex;
-    private float enemySpeed = 5.0f;
+    private float enemySpeed = 3.0f;
 
     // Start is called before the first frame update
     void Start()
