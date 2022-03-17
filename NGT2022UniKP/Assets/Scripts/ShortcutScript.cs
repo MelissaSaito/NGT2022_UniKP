@@ -19,6 +19,8 @@ public class ShortcutScript : MonoBehaviour
         Debug.Log("‰Ÿ‚³‚ê‚Ü‚µ‚½");
 
         GameObject obj = GameObject.Find("ShortcutObject");
+        GameObject shortcutButton = GameObject.Find("Shortcut");
         obj.SetActive(false);
+        shortcutButton.SetActive(false);
     }
 }
