@@ -4,52 +4,56 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
+    public Transform targetObject;
 
-    GameObject targetObj;
-    Vector3 targetPos;
+    public Vector3 cameraOffset;
 
-    //回転させるスピード
-    [SerializeField]
-    private float rotateSpeed = 0.5f;
+    public float smoothFactor = 0.5f;
 
+    public Transform obstruction;
+    float zoomSpeed = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        targetObj = GameObject.Find("Player");
-        targetPos = targetObj.transform.position;
-        // targetの移動量分、自分（カメラ）も移動する
-        transform.position += targetObj.transform.position - targetPos;
-
+        obstruction = targetObject;
+        cameraOffset = transform.position - targetObject.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        // targetの移動量分、自分（カメラ）も移動する
-        transform.position += targetObj.transform.position - targetPos;
+        Vector3 newPosition = targetObject.transform.position + cameraOffset;
+        transform.position = Vector3.Slerp(transform.position, newPosition, smoothFactor);
 
+        transform.LookAt(targetObject);
 
-        targetPos = targetObj.transform.position;
+        ViewObstructed();
+    }
 
-        //回転させる角度
-        float angle = 0;
-        if (Input.GetKey(KeyCode.L))
+    void ViewObstructed()
+    {
+        RaycastHit hit;
+
+        
+        if (Physics.Raycast(transform.position, targetObject.position - transform.position, out hit, 4.5f))
         {
-            angle = 1 * rotateSpeed;
+            if (hit.collider.gameObject.tag != "Player" && hit.collider.gameObject.tag != "Enemy")
+            {
+                obstruction = hit.transform;
+                obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+
+                if (Vector3.Distance(obstruction.position, transform.position) >= 3f && Vector3.Distance(transform.position, targetObject.position) >= 1.5f)
+                    transform.Translate(Vector3.forward * zoomSpeed * Time.deltaTime);
+            }
+
         }
-        if (Input.GetKey(KeyCode.J))
+        else
         {
-            angle = -1 * rotateSpeed;
+            obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+            if (Vector3.Distance(transform.position, targetObject.position) < 4.5f)
+                transform.Translate(Vector3.back * zoomSpeed * Time.deltaTime);
         }
-        if(Input.GetKey(KeyCode.L) && Input.GetKey(KeyCode.J))
-        {
-            angle = 0;
-        }
-
-
-        //プレイヤー中心で回転
-        transform.RotateAround(targetPos, Vector3.up, angle);
-
+        
+        
     }
 }
