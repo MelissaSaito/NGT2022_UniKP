@@ -8,6 +8,8 @@ TagManager:
   - Item
   - Enemy
   - GimmickUI
+  - Wall
+  - Grand
   layers:
   - Default
   - TransparentFX
