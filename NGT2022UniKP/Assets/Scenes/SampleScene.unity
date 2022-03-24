@@ -2341,7 +2341,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 2049412298}
   cameraOffset: {x: 0, y: 0, z: 0}
-  smoothFactor: 0.5
+  smoothFactor: 0.18
+  lookAtPlayer: 0
+  rotateAroundPlayer: 1
+  rotationSpeed: 5
   obstruction: {fileID: 0}
 --- !u!1 &974333099
 GameObject:

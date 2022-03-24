@@ -8,7 +8,13 @@ public class CameraScript : MonoBehaviour
 
     public Vector3 cameraOffset;
 
-    public float smoothFactor = 0.5f;
+    public float smoothFactor = 0.1f;
+
+    public bool lookAtPlayer = false;
+
+    public bool rotateAroundPlayer = true;
+
+    public float rotationSpeed = 5.0f;
 
     public Transform obstruction;
     float zoomSpeed = 2f;
@@ -22,10 +28,21 @@ public class CameraScript : MonoBehaviour
 
     void LateUpdate()
     {
+        if (rotateAroundPlayer)
+        {
+            Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotationSpeed, Vector3.up);
+
+            cameraOffset = camTurnAngle * cameraOffset;
+        }
+
         Vector3 newPosition = targetObject.transform.position + cameraOffset;
         transform.position = Vector3.Slerp(transform.position, newPosition, smoothFactor);
 
-        transform.LookAt(targetObject);
+        if(lookAtPlayer || rotateAroundPlayer)
+        {
+            transform.LookAt(targetObject);
+        }
+        
 
         ViewObstructed();
     }
