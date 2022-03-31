@@ -19,7 +19,9 @@ public class MapScript : MonoBehaviour
     
     void Update()
     {
-        if (mapFunction == true && Input.GetKeyUp(KeyCode.T))
+        //if (mapFunction == true && Input.GetKeyUp(KeyCode.T))
+        if (mapFunction == true && Input.GetButtonUp("ControllerY"))
+
         {
             if (mapImage.enabled == true)
             {
@@ -32,7 +34,8 @@ public class MapScript : MonoBehaviour
 
     void OnTriggerStay()
     {
-        if (Input.GetKey(KeyCode.E))
+        //if (Input.GetKey(KeyCode.E))
+        if (Input.GetButton("ControllerA"))
         {
             mapItem.SetActive(false);
             mapFunction = true;

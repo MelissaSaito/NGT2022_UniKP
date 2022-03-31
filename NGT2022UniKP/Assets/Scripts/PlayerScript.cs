@@ -45,7 +45,8 @@ public class PlayerScript : MonoBehaviour
         Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
 
         //slow移動
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetButton("ControllerB"))
+        //if (Input.GetKey(KeyCode.C))
         {
             // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
             rb.velocity = moveForward * slowMoveSpeed + new Vector3(0, rb.velocity.y, 0);

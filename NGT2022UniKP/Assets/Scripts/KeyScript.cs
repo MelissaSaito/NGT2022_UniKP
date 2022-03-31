@@ -22,7 +22,8 @@ public class KeyScript : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && Input.GetKey(KeyCode.E))
+        //if (other.CompareTag("Player") && Input.GetKey(KeyCode.E))
+        if (other.CompareTag("Player") && Input.GetButton("ControllerA"))
         {
             this.gameObject.SetActive(false);
             GetKey = true;
