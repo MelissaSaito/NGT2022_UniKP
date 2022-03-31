@@ -2215,7 +2215,7 @@ MonoBehaviour:
   smoothFactor: 0.18
   lookAtPlayer: 0
   rotateAroundPlayer: 1
-  rotationSpeed: 5
+  rotationSpeed: 2
   obstruction: {fileID: 0}
 --- !u!1 &974333099
 GameObject:
