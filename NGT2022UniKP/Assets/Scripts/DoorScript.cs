@@ -22,8 +22,8 @@ public class DoorScript : MonoBehaviour
     {
         if (key.GetComponent<KeyScript>().GetKey)
         {
-            //if (other.CompareTag("Player") && Input.GetKey(KeyCode.E))
-            if (other.CompareTag("Player") && Input.GetButton("ControllerA"))
+            if (other.CompareTag("Player") && Input.GetKey(KeyCode.E))
+                //if (other.CompareTag("Player") && Input.GetButton("ControllerA"))
 
             {
                 this.gameObject.SetActive(false);
