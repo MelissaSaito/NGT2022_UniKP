@@ -200,7 +200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6158224392298053013, guid: 4fce7ca1c8c8406429116717fd6539bc, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6158224392298053022, guid: 4fce7ca1c8c8406429116717fd6539bc, type: 3}
       propertyPath: m_RootOrder
@@ -1170,7 +1170,7 @@ GameObject:
   - component: {fileID: 479464281}
   m_Layer: 0
   m_Name: MapItem
-  m_TagString: Item
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1189,6 +1189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapImage: {fileID: 974333100}
   mapFunction: 0
+  timeTrigger: 0
+  isTrigger: 0
 --- !u!65 &479464277
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2215,7 +2217,7 @@ MonoBehaviour:
   smoothFactor: 0.18
   lookAtPlayer: 0
   rotateAroundPlayer: 1
-  rotationSpeed: 1
+  rotationSpeed: 3
   obstruction: {fileID: 0}
 --- !u!1 &974333099
 GameObject:
@@ -4573,6 +4575,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapImage: {fileID: 974333100}
   mapFunction: 0
+  timeTrigger: 0
+  isTrigger: 0
 --- !u!114 &2049412303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5019,7 +5023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6158224392298053013, guid: 4fce7ca1c8c8406429116717fd6539bc, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6158224392298053022, guid: 4fce7ca1c8c8406429116717fd6539bc, type: 3}
       propertyPath: m_RootOrder

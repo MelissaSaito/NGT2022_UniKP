@@ -26,7 +26,7 @@ public class CameraScript : MonoBehaviour
         cameraOffset = transform.position - targetObject.position;
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (rotateAroundPlayer)
         {
