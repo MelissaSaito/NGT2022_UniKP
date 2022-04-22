@@ -26,12 +26,12 @@ public class PlayerScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
 
-    }
+    //}
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         //キーボードのWASDとコントローラーの左スティックから入力を取るやつ
         inputHorizontal = Input.GetAxisRaw("Horizontal");
