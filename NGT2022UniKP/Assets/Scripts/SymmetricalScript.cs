@@ -5,15 +5,47 @@ using UnityEngine;
 public class SymmetricalScript : MonoBehaviour
 {
     [SerializeField] GameObject TresureBox;
+    [SerializeField] GameObject Ball_ColliderLeft;
+    [SerializeField] GameObject Ball_ColliderRight;
+    public float BallNum = 0;
 
-   
-    void OnTriggerStay(Collider other)
+    void Start ()
     {
-        if (other.CompareTag("Player") && Input.GetKey(KeyCode.E))
-        //if (other.CompareTag("Player") && Input.GetButton("ControllerA"))
+        
+    }
+
+    void FixedUpdate()
+    {
+        if(Ball_ColliderLeft.GetComponent<SymmetricalScript>().BallNum == 2 && Ball_ColliderRight.GetComponent<SymmetricalScript>().BallNum == 2)
         {
-            this.gameObject.SetActive(false);
             TresureBox.SetActive(true);
         }
+        else
+        {
+            TresureBox.SetActive(false);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "SyBall")
+        {
+            BallNum += 0.5f;
+        }
+        
+    }
+
+    void OnTriggerExit (Collider other)
+    {
+        if (other.gameObject.tag == "SyBall")
+        {
+            if(BallNum != 0)
+            {
+                BallNum -= 0.5f;
+            }
+
+        }
+
+
     }
 }

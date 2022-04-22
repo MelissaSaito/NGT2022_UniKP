@@ -54,6 +54,10 @@ public class CameraScript : MonoBehaviour
         
         if (Physics.Raycast(transform.position, targetObject.position - transform.position, out hit, 4.5f))
         {
+            if (hit.collider.gameObject.tag != "SyBall")
+            {
+                return;
+            }
             if (hit.collider.gameObject.tag != "Player" && hit.collider.gameObject.tag != "Enemy")
             {
                 obstruction = hit.transform;
