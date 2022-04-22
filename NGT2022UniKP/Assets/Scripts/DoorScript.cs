@@ -5,11 +5,16 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     public GameObject key;
+    Animator Ani_Door;
+    string state;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         key = GameObject.Find("Key");
+        state = "IsOpen";
+        Ani_Door = GetComponent<Animator>();
+        Ani_Door.speed = 0;
     }
 
     // Update is called once per frame
@@ -24,11 +29,16 @@ public class DoorScript : MonoBehaviour
         {
             if (other.CompareTag("Player") && Input.GetKey(KeyCode.E) || Input.GetButton("ControllerA"))
                 //if (other.CompareTag("Player") && Input.GetButton("ControllerA"))
-
             {
-                this.gameObject.SetActive(false);
-            }
+                //``doahiraku
+                //this.gameObject.SetActive(false);
+                if (Ani_Door.speed == 0 )
+                {
+                    Ani_Door.speed = 1;
+                }
 
+                Ani_Door.SetBool(state, true);
+            }
         }
     }
 }
