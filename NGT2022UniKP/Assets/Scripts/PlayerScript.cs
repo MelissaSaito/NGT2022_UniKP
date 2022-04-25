@@ -14,14 +14,14 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     float slowMoveSpeed = 5.0f;
 
-    GameObject UpperBody;
+    //GameObject UpperBody;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        UpperBody = GameObject.Find("UpperBody");
+        //UpperBody = GameObject.Find("UpperBody");
 
     }
 
@@ -52,7 +52,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = moveForward * slowMoveSpeed + new Vector3(0, rb.velocity.y, 0);
 
             //上のCube無くす
-            UpperBody.SetActive(false);
+            //UpperBody.SetActive(false);
 
 
         }
@@ -61,7 +61,7 @@ public class PlayerScript : MonoBehaviour
             // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
             rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
             //上のCube写す
-            UpperBody.SetActive(true);
+            //UpperBody.SetActive(true);
 
         }
 
