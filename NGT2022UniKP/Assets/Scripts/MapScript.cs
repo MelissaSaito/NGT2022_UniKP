@@ -19,7 +19,7 @@ public class MapScript : MonoBehaviour
     }
 
     
-    void FixedUpdate()
+    void Update()
     {
 
         //if (mapFunction == true && Input.GetKeyUp(KeyCode.T))
