@@ -44,7 +44,7 @@ public class SelectSceneScipt : MonoBehaviour
     {
         nextStage = GameObject.Find(stageName[stageNo]);
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetButtonDown("ControllerLTrigger"))
         {
             stageNo--;
             
@@ -57,7 +57,7 @@ public class SelectSceneScipt : MonoBehaviour
             nextStage = GameObject.Find(stageName[stageNo]);
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetButtonDown("ControllerRTrigger"))
         {
             stageNo++;
 
@@ -70,7 +70,7 @@ public class SelectSceneScipt : MonoBehaviour
             nextStage = GameObject.Find(stageName[stageNo]);
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("ControllerB"))
         {
             if (changeStage == true)
             {
