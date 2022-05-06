@@ -1,0 +1,99 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class SelectSceneScipt : MonoBehaviour
+{
+    [SerializeField] private GameObject nowStage = null;
+    [SerializeField] private GameObject nextStage;
+
+    GameObject saveLoadObject;
+
+    SaveLoadScript saveLoadScript;
+
+    Vector3 nowStageSize = new Vector3(3.95f, 3.909882f, 0.7109794f);
+    Vector3 nextStageSize = new Vector3(3.95f, 3.909882f, 1.31f);
+
+    [SerializeField] private Material nowStageMaterial;
+    [SerializeField] private Material nextStageMaterial;
+
+
+
+    string[] stageName = new string[5] { "Stage1", "Stage2", "Stage3", "Stage4", "Stage5" };
+
+    bool changeStage;
+    
+    [SerializeField] private int stageNo = 0;
+
+    [SerializeField] public int stageLimit = 0;
+
+
+    void Start()
+    {
+        nextStage = GameObject.Find(stageName[stageNo]);
+        saveLoadObject = GameObject.Find("SaveLoadSystem");
+
+        changeStage = true;
+
+        saveLoadScript = saveLoadObject.GetComponent<SaveLoadScript>();
+        saveLoadScript.Load();
+    }
+
+    void Update()
+    {
+        nextStage = GameObject.Find(stageName[stageNo]);
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            stageNo--;
+            
+            nowStage = nextStage;
+
+            if (stageNo <= 0)
+            {
+                stageNo = 0;
+            }
+            nextStage = GameObject.Find(stageName[stageNo]);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            stageNo++;
+
+            nowStage = nextStage;
+            
+            if (stageNo >= stageLimit)
+            {
+                stageNo = stageLimit;
+            }
+            nextStage = GameObject.Find(stageName[stageNo]);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (changeStage == true)
+            {
+                changeStage = false;
+                SceneManager.LoadScene(stageName[stageNo], LoadSceneMode.Single);
+                Debug.Log("Loaded to " + stageName[stageNo]);
+            }
+        }
+
+
+        if (nowStage != null && nowStage != nextStage)
+        {
+            nowStage.transform.localScale = nowStageSize;
+            nowStage.GetComponent<MeshRenderer>().material = nowStageMaterial;
+        }
+        
+
+        if (nowStage != nextStage)
+        {
+            nextStage.transform.localScale = nextStageSize;
+            nextStage.GetComponent<MeshRenderer>().material = nextStageMaterial;
+        }
+            
+    }
+
+}
