@@ -1,3 +1,9 @@
+//----------------------------------------------------------------
+// 徘徊エネミーのスクリプト
+//  作成者:佐田
+//　03/30会話関連追加(内村)
+//  05/02死亡判定追加(内村)
+//----------------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +17,12 @@ public class RoamingEnemyScript : MonoBehaviour
     private int currentWaypointIndex;
     private float enemySpeed = 3.0f;
 
+    // 05/02内村追加
+    //プレイヤーとプレイヤー状態スクリプトの入れ物----------------------------
+    GameObject player;
+    PlayerStateScript playerState;
+    //------------------------------------------------------------------------
+
     //03/30内村追加-------------------------------------
     //会話関連
     [SerializeField]
@@ -22,8 +34,8 @@ public class RoamingEnemyScript : MonoBehaviour
     public string[] message2;// 表示させるメッセージ
 
 
-    private bool talk1 = true;
-    private bool talk2 = true;
+    [SerializeField] private bool talk1 = true;
+    [SerializeField] private bool talk2 = true;
     //---------------------------------------------------
 
 
@@ -34,6 +46,11 @@ public class RoamingEnemyScript : MonoBehaviour
         navMeshAgent.speed = enemySpeed;
         // 最初の目的地を入れる
         navMeshAgent.SetDestination(waypoints[0].position);
+
+        //05/02内村追加---------------------------------------------------------------------------
+        player = GameObject.Find("Player");
+        playerState = player.GetComponent<PlayerStateScript>();
+        //-----------------------------------------------------------------------------
     }
 
     // Update is called once per frame
@@ -111,7 +128,10 @@ public class RoamingEnemyScript : MonoBehaviour
                 StartCoroutine("Message", message2);// Messageコルーチンを実行する
                 messageScript.talkflag = true;
                 messageScript.eraseTimeFlag = true;
-
+                //05/02内村追加---------------------------------------------------------------------------
+                //  発見されたら死亡判定をPlayerStateへ
+                playerState.flag = StateFlags.DEATH;
+                //----------------------------------------------------------------------------------------
                 talk2 = false;
             }
 

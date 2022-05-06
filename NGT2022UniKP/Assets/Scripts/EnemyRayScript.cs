@@ -12,15 +12,8 @@ public class EnemyRayScript : MonoBehaviour
 
     [Header("EnemyMassage")]
     [SerializeField]
-    public string[] message;// 表示させるメッセージ
     public string[] message1;// 表示させるメッセージ
     public string[] message2;// 表示させるメッセージ
-    public string[] message3;// 表示させるメッセージ
-    public string[] message4;// 表示させるメッセージ
-    public string[] message5;// 表示させるメッセージ
-
-    private int talkFlag = 0;
-    private int talkMax = 6;
 
     private bool talk1 = true;
     private bool talk2 = true;
@@ -42,7 +35,22 @@ public class EnemyRayScript : MonoBehaviour
 
     [SerializeField] GameObject playerRockScript;
 
+    //シーンフラグ用04/27内村追加-----------------------------------
+    public bool fine;
+    [SerializeField] GameObject player;
+    [SerializeField] PlayerStateScript playerState;
+    //----------------------------------------------------------------
 
+
+
+    void Start()
+    {
+        //05/02内村追加----------------------------------------------------
+        player = GameObject.Find("Player");
+        playerState = player.GetComponent<PlayerStateScript>();
+        //-----------------------------------------------------------------
+    }
+    //--------------------------------------------------------------
 
     //enemyからplayerまで光線を出す
     private void FixedUpdate()
@@ -75,25 +83,31 @@ public class EnemyRayScript : MonoBehaviour
             if (isTrigger == true && hit.collider.gameObject.tag == ("Player"))
             {
                 //////ここ追加フラッシュの有無
-                if (playerRockScript.GetComponent<PlayerLockScript>().getFlash() == false)
-                {
+                //if (playerRockScript.GetComponent<PlayerLockScript>().getFlash() == false)
+                //{
                     isFounded = true;
+                fine = true;
                     if (talk2 == true)
                     {
                         StartCoroutine("Message", message2);// Messageコルーチンを実行する
                         messageScript.talkflag = true;
                         talk2 = false;
                     }
-                }
-                else
-                {
+                //}
+                //else
+                //{
 
-                }
+                //}
+                //05/03追加内村
+                //プレイヤーの状態をDEATHへ--------------------------
+                playerState.flag = StateFlags.DEATH;
+                //---------------------------------------------------
             }
             else
             {
                 messageScript.talkflag = false;
                 isFounded = false;
+                fine = false;
 
             }
 
