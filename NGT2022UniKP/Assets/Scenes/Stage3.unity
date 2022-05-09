@@ -661,6 +661,7 @@ MonoBehaviour:
   Ball_ColliderLeft: {fileID: 128746452}
   Ball_ColliderRight: {fileID: 1980326981}
   BallNum: 0
+  tresureBoxScript: {fileID: 821441266}
 --- !u!1 &158315670 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3526252372089817328, guid: 1608528a4f2b67d4db7cc4e53bfc4078, type: 3}
@@ -1472,6 +1473,8 @@ MonoBehaviour:
   displayTime: 0
   eraseFlag: 0
   eraseTimeFlag: 0
+  deathFlag: 0
+  deathTime: 0
 --- !u!4 &638361997
 Transform:
   m_ObjectHideFlags: 0
@@ -2220,6 +2223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameClear: 0
+  picked: 0
 --- !u!65 &821441267
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3768,6 +3772,7 @@ MonoBehaviour:
   Ball_ColliderLeft: {fileID: 128746452}
   Ball_ColliderRight: {fileID: 1980326981}
   BallNum: 0
+  tresureBoxScript: {fileID: 821441266}
 --- !u!65 &1980326983
 BoxCollider:
   m_ObjectHideFlags: 0
