@@ -64,6 +64,8 @@ public class RoamingEnemyScript : MonoBehaviour
             // –Ú“I’n‚ğŸ‚ÌêŠ‚Éİ’è
             navMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
         }
+
+        
     }
     //03/30“à‘º’Ç‰Á-----------------------------------------------------------------------------
 
