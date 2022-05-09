@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class EnemyRayScript : MonoBehaviour
@@ -64,10 +63,6 @@ public class EnemyRayScript : MonoBehaviour
 
         }
 
-        if (messageScript.deathFlag = true)
-        {
-            messageScript.deathTime += Time.deltaTime;
-        }
 
         if (messageScript.displayTime >= 20.0f)
         {
@@ -129,23 +124,6 @@ public class EnemyRayScript : MonoBehaviour
 
 
         //
-    }
-
-    void Update()
-    {
-        if (playerState.flag == StateFlags.DEATH)
-        {
-            if (!messageScript.deathFlag)
-            {
-                messageScript.deathFlag = true;
-            }
-
-            if (messageScript.deathTime >= 20.0f)
-            {
-                SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
-            }
-
-        }
     }
 
     void EraseTalk()
