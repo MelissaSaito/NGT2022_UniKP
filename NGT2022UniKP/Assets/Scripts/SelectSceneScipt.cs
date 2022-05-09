@@ -37,7 +37,7 @@ public class SelectSceneScipt : MonoBehaviour
         changeStage = true;
 
         saveLoadScript = saveLoadObject.GetComponent<SaveLoadScript>();
-        saveLoadScript.Load();
+        saveLoadScript.Save();
     }
 
     void Update()
