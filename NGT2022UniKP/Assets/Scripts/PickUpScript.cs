@@ -42,7 +42,13 @@ public class PickUpScript : MonoBehaviour
     {
         GameObject pickUpItem = other.gameObject;
 
-        pickUpItem.GetComponent<Rigidbody>().isKinematic = true;
+
+        if (pickUpItem.GetComponent<Rigidbody>() != null)
+        {
+            pickUpItem.GetComponent<Rigidbody>().isKinematic = true;
+        }
+        
+        
 
         if (pickUpItem.tag == "SyBall" && lockPickUp == false)
         {
@@ -64,7 +70,7 @@ public class PickUpScript : MonoBehaviour
     void HeldItem ()
     {
         itemHolding = itemToPickUp;
-        itemToPickUp = null;
+        //itemToPickUp = null;
         holdingItem = true;
         pickUp = false;
     }
