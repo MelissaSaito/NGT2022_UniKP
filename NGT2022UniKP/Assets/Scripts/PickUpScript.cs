@@ -18,18 +18,19 @@ public class PickUpScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(pickUp == true && Input.GetKey(KeyCode.R) || Input.GetButton("ControllerY"))
+        if(pickUp == true && Input.GetKey(KeyCode.R) || Input.GetKey("joystick button 3"))
         {
             HeldItem();
         }
 
-        if(holdingItem && Input.GetKey(KeyCode.R) || Input.GetButton("ControllerY"))
+        if(holdingItem && Input.GetKey(KeyCode.R) || Input.GetKey("joystick button 3"))
         {
             itemHolding.transform.position = objectHolder.transform.position;
             lockPickUp = true;
         }
         else if(holdingItem)
         {
+            itemToPickUp = null;
             itemHolding.GetComponent<Rigidbody>().isKinematic = false;
             holdingItem = false;
             lockPickUp = false;
@@ -70,7 +71,7 @@ public class PickUpScript : MonoBehaviour
     void HeldItem ()
     {
         itemHolding = itemToPickUp;
-        //itemToPickUp = null;
+        
         holdingItem = true;
         pickUp = false;
     }

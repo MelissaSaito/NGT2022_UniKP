@@ -9,6 +9,8 @@ public class SymmetricalScript : MonoBehaviour
     [SerializeField] GameObject Ball_ColliderRight;
     public float BallNum = 0;
 
+    [SerializeField] TresureBoxScript tresureBoxScript;
+
     void Start ()
     {
         
@@ -18,7 +20,10 @@ public class SymmetricalScript : MonoBehaviour
     {
         if(Ball_ColliderLeft.GetComponent<SymmetricalScript>().BallNum == 2 && Ball_ColliderRight.GetComponent<SymmetricalScript>().BallNum == 2)
         {
-            TresureBox.SetActive(true);
+            if(tresureBoxScript.picked == false)
+            {
+                TresureBox.SetActive(true);
+            }
         }
         else
         {

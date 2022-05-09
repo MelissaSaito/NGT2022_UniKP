@@ -33,6 +33,8 @@ public class Message : MonoBehaviour
     public bool eraseFlag = false;
     public bool eraseTimeFlag = false;
 
+    public bool deathFlag = false;  //Ž€‚ñ‚¾Žž‚Ì”»’è
+    public float deathTime = 0.0f;    //Ž€‚ñ‚¾Œã‚ÌŽc‚èŽžŠÔ
 
     void Start()
     {

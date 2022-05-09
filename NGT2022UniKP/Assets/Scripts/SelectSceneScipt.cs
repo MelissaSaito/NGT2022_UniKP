@@ -26,11 +26,13 @@ public class SelectSceneScipt : MonoBehaviour
     
     [SerializeField] private int stageNo = 0;
 
-    [SerializeField] public int stageLimit = 0;
+    [SerializeField] public int stageLimit;
 
 
     void Start()
     {
+        stageLimit = 4;
+
         nextStage = GameObject.Find(stageName[stageNo]);
         saveLoadObject = GameObject.Find("SaveLoadSystem");
 
