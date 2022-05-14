@@ -10,15 +10,54 @@ public class GuimmicScript : MonoBehaviour
     private int count1,count2, count3, count4, count5, count6, count7, count8, count9;
     private bool use1, use2, use3, use4, use5, use6, use7, use8, use9;
 
+    [SerializeField] bool startShortCut;
+
     // Start is called before the first frame update
     void Start()
     {
         shortCut.SetActive(false);
+        startShortCut = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetButtonDown("ControllerA") && startShortCut == true)
+        {
+            ButtonClick1();
+        }
+
+        if (Input.GetButtonDown("ControllerLTrigger") && startShortCut == true)
+        {
+            ButtonClick2();
+        }
+
+        if (Input.GetButtonDown("Back") && startShortCut == true)
+        {
+            ButtonClick3();
+        }
+
+        if (Input.GetButtonDown("ControllerY") && startShortCut == true)
+        {
+            ButtonClick5();
+        }
+
+        if (Input.GetButtonDown("ControllerX") && startShortCut == true)
+        {
+            ButtonClick7();
+        }
+
+        if (Input.GetButtonDown("ControllerB") && startShortCut == true)
+        {
+            ButtonClick8();
+        }
+
+        if (Input.GetButtonDown("Enter") && startShortCut == true)
+        {
+            ButtonClick9();
+        }
+
         Open();
     }
 
@@ -26,11 +65,13 @@ public class GuimmicScript : MonoBehaviour
     {
         Debug.Log("ギミック使用中");
         shortCut.SetActive(true);
+        startShortCut = true;
     }
 
     void OnTriggerExit(Collider other)
     {
         shortCut.SetActive(false);
+        startShortCut = false;
     }
 
     public void ButtonClick1()
