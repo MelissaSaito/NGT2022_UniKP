@@ -11,7 +11,6 @@ public class ShortcutColliderScript : MonoBehaviour
     void Start()
     {
         shortCut.SetActive(false);
-
     }
 
 
@@ -19,6 +18,5 @@ public class ShortcutColliderScript : MonoBehaviour
     {
             Debug.Log("ギミック使用中");
             shortCut.SetActive(true);
-
     }
 }
