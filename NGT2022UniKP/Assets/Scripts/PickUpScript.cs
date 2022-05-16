@@ -14,26 +14,30 @@ public class PickUpScript : MonoBehaviour
 
     [SerializeField] private bool pickUp = false;
     [SerializeField] private bool holdingItem = false;
-    private bool lockPickUp = false;
+    [SerializeField] private bool lockPickUp = false;
 
-    void FixedUpdate()
+    void Update()
     {
-        if(pickUp == true && Input.GetKey(KeyCode.R) || Input.GetKey("joystick button 3"))
+        
+        if(pickUp == true && (Input.GetKey(KeyCode.R) || Input.GetKey("joystick button 2")))
         {
             HeldItem();
         }
-
-        if(holdingItem && Input.GetKey(KeyCode.R) || Input.GetKey("joystick button 3"))
+        if (itemHolding != null)
         {
-            itemHolding.transform.position = objectHolder.transform.position;
-            lockPickUp = true;
-        }
-        else if(holdingItem)
-        {
-            itemToPickUp = null;
-            itemHolding.GetComponent<Rigidbody>().isKinematic = false;
-            holdingItem = false;
-            lockPickUp = false;
+            if (holdingItem == true && (Input.GetKey(KeyCode.R) || Input.GetKey("joystick button 2")))
+            {
+                itemHolding.transform.position = objectHolder.transform.position;
+                lockPickUp = true;
+            }
+            else if (holdingItem == true)
+            {
+                itemToPickUp = null;
+                itemHolding.GetComponent<Rigidbody>().isKinematic = false;
+                holdingItem = false;
+                lockPickUp = false;
+                itemHolding = null;
+            }
         }
 
         
