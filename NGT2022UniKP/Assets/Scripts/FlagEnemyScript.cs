@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class EnemyRayScript : MonoBehaviour
+public class FlagEnemyScript : MonoBehaviour
 
 {
     //会話関連
@@ -42,6 +42,8 @@ public class EnemyRayScript : MonoBehaviour
     //----------------------------------------------------------------
 
 
+    //05/16追加内村
+    public bool moveEnemyFlag = false;
 
     void Start()
     {
@@ -72,7 +74,7 @@ public class EnemyRayScript : MonoBehaviour
             messageScript.eraseTimeFlag = false;
             messageScript.displayTime = 0.0f;
         }
-               //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
 
 
         //enemy正面のベクトル
@@ -84,26 +86,14 @@ public class EnemyRayScript : MonoBehaviour
             //対象のtagがplayerだったら見つかったと画面に表示する。
             if (isTrigger == true && hit.collider.gameObject.tag == ("Player"))
             {
-                //////ここ追加フラッシュの有無
-                //if (playerRockScript.GetComponent<PlayerLockScript>().getFlash() == false)
-                //{
-                    isFounded = true;
+                isFounded = true;
                 fine = true;
-                    if (talk2 == true)
-                    {
-                        StartCoroutine("Message", message2);// Messageコルーチンを実行する
-                        messageScript.talkflag = true;
-                        talk2 = false;
-                    }
-                //}
-                //else
-                //{
-
-                //}
-                //05/03追加内村
-                //プレイヤーの状態をDEATHへ--------------------------
-                //playerState.flag = StateFlags.DEATH;
-                //---------------------------------------------------
+                if (talk2 == true)
+                {
+                    StartCoroutine("Message", message2);// Messageコルーチンを実行する
+                    messageScript.talkflag = true;
+                    talk2 = false;
+                }
             }
             else
             {
@@ -113,9 +103,6 @@ public class EnemyRayScript : MonoBehaviour
 
             }
 
-            //あたったものの情報を取得したい場合↓
-            //GameObject hitObject = hit.collider.gameObject;
-            //Debug.Log(hitObject);
 
             //光線を赤色でDrawする
             Debug.DrawRay(transform.position, enemyForward * rayDistance, Color.red);
@@ -185,6 +172,9 @@ public class EnemyRayScript : MonoBehaviour
                     StartCoroutine("Message", message1);// Messageコルーチンを実行する
                     messageScript.talkflag = true;
                     messageScript.eraseTimeFlag = true;
+
+                    //05/16内村追加
+                    moveEnemyFlag = true;
 
                     talk1 = false;
                 }

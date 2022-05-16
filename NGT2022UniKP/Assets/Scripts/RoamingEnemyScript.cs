@@ -38,6 +38,9 @@ public class RoamingEnemyScript : MonoBehaviour
     [SerializeField] private bool talk2 = true;
     //---------------------------------------------------
 
+    //05/16内村追加
+    public int wayPointNumber;
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,11 +63,14 @@ public class RoamingEnemyScript : MonoBehaviour
         if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
             // 目的地の番号を１更新（右辺を剰余演算子にすることで目的地をループさせれる）
-            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            currentWaypointIndex = (currentWaypointIndex + 1);
+            //0516内村追加
+            wayPointNumber = currentWaypointIndex;
+
+            currentWaypointIndex = wayPointNumber % waypoints.Length;
             // 目的地を次の場所に設定
             navMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
         }
-
         
     }
     //03/30内村追加-----------------------------------------------------------------------------
@@ -132,7 +138,7 @@ public class RoamingEnemyScript : MonoBehaviour
                 messageScript.eraseTimeFlag = true;
                 //05/02内村追加---------------------------------------------------------------------------
                 //  発見されたら死亡判定をPlayerStateへ
-                playerState.flag = StateFlags.DEATH;
+                //playerState.flag = StateFlags.DEATH;
                 //----------------------------------------------------------------------------------------
                 talk2 = false;
             }
