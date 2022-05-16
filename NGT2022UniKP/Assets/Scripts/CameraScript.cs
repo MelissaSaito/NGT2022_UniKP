@@ -14,7 +14,8 @@ public class CameraScript : MonoBehaviour
 
     public bool rotateAroundPlayer = true;
 
-    public float rotationSpeed = 1.0f;
+    public float rotationSpeed;
+    public float rotationSpeed_2;
 
     public Transform obstruction;
     float zoomSpeed = 2f;
@@ -24,25 +25,41 @@ public class CameraScript : MonoBehaviour
     {
         obstruction = targetObject;
         cameraOffset = transform.position - targetObject.position;
+        rotationSpeed = 3.0f;
+        rotationSpeed_2 = 10.0f;
     }
 
     void FixedUpdate()
     {
-        if (rotateAroundPlayer)
+        if (Input.GetAxis("Mouse X") == 0)
         {
-            Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Vertical2") * rotationSpeed, Vector3.up);
+            if (rotateAroundPlayer)
+            {
+                Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Vertical2") * rotationSpeed, Vector3.up);
 
-            cameraOffset = camTurnAngle * cameraOffset;
+                cameraOffset = camTurnAngle * cameraOffset;
+            }
+
+            Vector3 newPosition = targetObject.transform.position + cameraOffset;
+            transform.position = Vector3.Slerp(transform.position, newPosition, smoothFactor);
+        }
+        else if (Input.GetAxis("Vertical2") == 0)
+        {
+            if (rotateAroundPlayer)
+            {
+                Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotationSpeed_2, Vector3.up);
+
+                cameraOffset = camTurnAngle * cameraOffset;
+            }
+
+            Vector3 newPosition = targetObject.transform.position + cameraOffset;
+            transform.position = Vector3.Slerp(transform.position, newPosition, smoothFactor);
         }
 
-        Vector3 newPosition = targetObject.transform.position + cameraOffset;
-        transform.position = Vector3.Slerp(transform.position, newPosition, smoothFactor);
-
-        if(lookAtPlayer || rotateAroundPlayer)
+        if (lookAtPlayer || rotateAroundPlayer)
         {
             transform.LookAt(targetObject);
         }
-        
 
         ViewObstructed();
     }
