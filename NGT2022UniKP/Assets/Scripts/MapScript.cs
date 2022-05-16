@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class MapScript : MonoBehaviour
 {
     //マップの表示
-    [SerializeField] private Image mapImage;
-    [SerializeField] bool mapFunction = false;
+    [SerializeField] public Image mapImage;
+    [SerializeField] public bool mapFunction = false;
 
     private float countTime = 0.0f;
     [SerializeField] bool timeTrigger = false;
@@ -22,8 +22,8 @@ public class MapScript : MonoBehaviour
     void Update()
     {
 
-        //if (mapFunction == true && Input.GetKeyUp(KeyCode.T))
-        if (mapFunction == true && Input.GetButtonUp("ControllerY"))
+        //if (mapFunction == true && Input.GetKeyDown(KeyCode.T))
+        if (mapFunction == true && Input.GetButtonDown("ControllerY"))
 
         {
             if (mapImage.enabled == true)

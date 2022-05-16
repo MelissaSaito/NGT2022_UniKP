@@ -6,17 +6,29 @@ using UnityEngine.UI;
 public class GuimmicScript : MonoBehaviour
 {
     [SerializeField] GameObject shortCut;
+    GameObject player;
 
     private int count1,count2, count3, count4, count5, count6, count7, count8, count9;
     private bool use1, use2, use3, use4, use5, use6, use7, use8, use9;
 
     [SerializeField] bool startShortCut;
 
+    MapScript playerMapScript;
+
+    bool hadMap;
+
+
     // Start is called before the first frame update
     void Start()
     {
         shortCut.SetActive(false);
+        
         startShortCut = false;
+        player = GameObject.Find("Player");
+
+        playerMapScript = player.GetComponent<MapScript>();
+
+        hadMap = false;
     }
 
     // Update is called once per frame
@@ -40,6 +52,10 @@ public class GuimmicScript : MonoBehaviour
 
         if (Input.GetButtonDown("ControllerY") && startShortCut == true)
         {
+            if (playerMapScript.mapImage.enabled == true)
+            {
+                return;
+            }
             ButtonClick5();
         }
 
@@ -66,13 +82,29 @@ public class GuimmicScript : MonoBehaviour
         Debug.Log("ギミック使用中");
         shortCut.SetActive(true);
         startShortCut = true;
+
+        if (playerMapScript.mapFunction == true)
+        {
+            playerMapScript.mapFunction = false;
+            playerMapScript.mapImage.enabled = false;
+            hadMap = true;
+        }
+        
+
     }
 
     void OnTriggerExit(Collider other)
     {
         shortCut.SetActive(false);
         startShortCut = false;
+        
+        if(hadMap == true)
+        {
+            playerMapScript.mapFunction = true;
+        }
+        
     }
+
 
     public void ButtonClick1()
     {

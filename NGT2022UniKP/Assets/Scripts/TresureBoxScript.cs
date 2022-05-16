@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TresureBoxScript : MonoBehaviour
 {
@@ -8,21 +9,25 @@ public class TresureBoxScript : MonoBehaviour
     private bool pickUp = false;
     public bool picked = false;
 
-    //void OnTriggerStay(Collider other)
-    //{
-    //    if (other.CompareTag("Player") && Input.GetKey(KeyCode.E) || Input.GetButton("ControllerA"))
-    //    //if (other.CompareTag("Player") && Input.GetButton("ControllerA"))
-    //    {
-    //        this.gameObject.SetActive(false);
-    //        GameClear = true;
-    //    }
-    //}
+    public string  sceneName;
+
+    void Start()
+    {
+        sceneName = SceneManager.GetActiveScene().name;
+    }
 
     void Update()
     {
         if (pickUp == true && Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("ControllerA"))
         {
-            this.gameObject.SetActive(false);
+            if (sceneName == "Stage3")
+            {
+                this.gameObject.SetActive(false);
+            }
+
+
+            GameClear = true;
+
             picked = true;
         }
     }
