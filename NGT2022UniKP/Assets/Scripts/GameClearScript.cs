@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 
 public class GameClearScript : MonoBehaviour
 {
@@ -9,14 +11,22 @@ public class GameClearScript : MonoBehaviour
     public TresureBoxScript tresureBox;
     [SerializeField] private TMP_Text gameClearMessage;
     [SerializeField] private float gameClearCount;
-    public bool stage1Finish = false;
+    public bool stage1Finish = true;//
+
+    public Button btnA;
+    public Button btnB;
 
 
     void Start()
     {
         tresureBox = GameObject.Find("TresureBox").GetComponent<TresureBoxScript>();
         gameClearMessage.enabled = false;
+        btnA.gameObject.SetActive(false);
+        btnB.gameObject.SetActive(false);
+
+
         gameClearCount = flameSec * 5.0f;
+
     }
 
     void FixedUpdate()
@@ -38,6 +48,9 @@ public class GameClearScript : MonoBehaviour
         if (tresureBox.GameClear == true)
         {
             gameClearMessage.enabled = true;
+            btnA.gameObject.SetActive(true);
+            btnB.gameObject.SetActive(true);
+
             stage1Finish = true;
         }
     }

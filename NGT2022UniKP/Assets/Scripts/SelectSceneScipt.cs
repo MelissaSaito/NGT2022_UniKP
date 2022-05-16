@@ -36,6 +36,8 @@ public class SelectSceneScipt : MonoBehaviour
         nextStage = GameObject.Find(stageName[stageNo]);
         saveLoadObject = GameObject.Find("SaveLoadSystem");
 
+        stageLimit = 4;
+
         changeStage = true;
 
         saveLoadScript = saveLoadObject.GetComponent<SaveLoadScript>();
