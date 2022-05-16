@@ -18,7 +18,7 @@ public class TresureBoxScript : MonoBehaviour
 
     void Update()
     {
-        if (pickUp == true && Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("ControllerA"))
+        if (pickUp == true && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("ControllerA")))
         {
             if (sceneName == "Stage3")
             {
