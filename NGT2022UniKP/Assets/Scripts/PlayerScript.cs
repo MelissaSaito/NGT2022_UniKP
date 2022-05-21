@@ -14,6 +14,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     float slowMoveSpeed = 5.0f;
 
+    
+    Animator m_Animator;
+
     //GameObject UpperBody;
 
 
@@ -22,15 +25,14 @@ public class PlayerScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         //UpperBody = GameObject.Find("UpperBody");
+        m_Animator = GetComponent<Animator>();
 
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-
-    //}
-
+    void Update()
+    {
+        m_Animator.SetFloat("Speed", rb.velocity.magnitude);
+    }
     void LateUpdate()
     {
         //キーボードのWASDとコントローラーの左スティックから入力を取るやつ
