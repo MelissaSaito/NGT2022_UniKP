@@ -18,8 +18,8 @@ public class PickUpScript : MonoBehaviour
 
     void Update()
     {
-        
-        if(pickUp == true && (Input.GetKey(KeyCode.R) || Input.GetKey("joystick button 2")))
+
+        if (pickUp == true && (Input.GetKey(KeyCode.R) || Input.GetKey("joystick button 2")))
         {
             HeldItem();
         }
@@ -40,7 +40,7 @@ public class PickUpScript : MonoBehaviour
             }
         }
 
-        
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -52,33 +52,33 @@ public class PickUpScript : MonoBehaviour
         {
             pickUpItem.GetComponent<Rigidbody>().isKinematic = true;
         }
-        
-        
+
+
 
         if (pickUpItem.tag == "SyBall" && lockPickUp == false)
         {
             itemToPickUp = pickUpItem;
             pickUp = true;
         }
-    }   
+    }
 
 
     void OnTriggerExit(Collider other)
     {
-        if (other == null)
+        if (other.tag == "SyBall")
         {
             itemToPickUp = null;
             pickUp = false;
         }
     }
 
-    void HeldItem ()
+    void HeldItem()
     {
         itemHolding = itemToPickUp;
-        
+
         holdingItem = true;
         pickUp = false;
     }
 
-    
+
 }
