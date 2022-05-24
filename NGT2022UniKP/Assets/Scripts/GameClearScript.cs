@@ -24,7 +24,7 @@ public class GameClearScript : MonoBehaviour
 
     void Start()
     {
-        tresureBox = GameObject.Find("TresureBox").GetComponent<TresureBoxScript>();
+        tresureBox = GameObject.Find("object_serverhost_20220516").GetComponent<TresureBoxScript>();
         gameClearMessage.enabled = false;
         btnA.gameObject.SetActive(false);
         btnB.gameObject.SetActive(false);
