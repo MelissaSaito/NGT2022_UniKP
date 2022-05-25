@@ -20,7 +20,7 @@ public class GameClearScript : MonoBehaviour
     //ƒ{ƒ^ƒ“‚Ìˆ—
     [SerializeField] int selectNum;
 
-    
+    [SerializeField] public int stageNo;
 
     void Start()
     {
@@ -105,6 +105,12 @@ public class GameClearScript : MonoBehaviour
             btnB.gameObject.SetActive(true);
 
             stageFinish = true;
+
+            GameObject SaveLoadSystem = GameObject.Find("SaveLoadSystem");
+
+            SaveLoadStageScript saveLoadStageScript = SaveLoadSystem.GetComponent<SaveLoadStageScript>();
+
+            saveLoadStageScript.Save(stageNo);
         }
     }
 
