@@ -2,46 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using static SaveLoadScript;
 
 public class SelectSceneScipt : MonoBehaviour
 {
-    [SerializeField] private GameObject nowStage = null;
-    [SerializeField] private GameObject nextStage;
+    [SerializeField] GameObject nowStage;
+    [SerializeField] GameObject nextStage;
 
     GameObject saveLoadObject;
-
     SaveLoadScript saveLoadScript;
 
-    Vector3 nowStageSize = new Vector3(3.95f, 3.909882f, 0.7109794f);
-    Vector3 nextStageSize = new Vector3(3.95f, 3.909882f, 1.31f);
-
-    [SerializeField] private Material nowStageMaterial;
-    [SerializeField] private Material nextStageMaterial;
-
-
-
-    string[] stageName = new string[5] { "Stage1", "Stage2", "Stage3", "Stage4", "Stage5" };
+    string[] stageName = new string[4] { "Stage1", "Stage2", "Stage3", "Stage4"};
 
     bool changeStage;
-    
-    [SerializeField] private int stageNo = 0;
+
+    [SerializeField] private int stageNo;
 
     [SerializeField] public int stageLimit;
 
+    [SerializeField] GameObject[] g_stageObject = new GameObject[4];
 
     void Start()
     {
-        stageLimit = 4;
+        stageNo = 0;
 
+        stageLimit = 0;
+
+        nowStage = GameObject.Find(stageName[stageNo]);
         nextStage = GameObject.Find(stageName[stageNo]);
         saveLoadObject = GameObject.Find("SaveLoadSystem");
 
-        stageLimit = 4;
+        saveLoadScript = saveLoadObject.GetComponent<SaveLoadScript>();
+        saveLoadScript.Load();
+
+        for (int i = 0; i < stageLimit; i++)
+        {
+            g_stageObject[i] = GameObject.Find(stageName[i]);
+        }
 
         changeStage = true;
-
-        saveLoadScript = saveLoadObject.GetComponent<SaveLoadScript>();
-        saveLoadScript.Save();
     }
 
     void Update()
@@ -51,7 +51,7 @@ public class SelectSceneScipt : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetButtonDown("ControllerLTrigger"))
         {
             stageNo--;
-            
+
             nowStage = nextStage;
 
             if (stageNo <= 0)
@@ -66,10 +66,15 @@ public class SelectSceneScipt : MonoBehaviour
             stageNo++;
 
             nowStage = nextStage;
-            
-            if (stageNo >= stageLimit)
+
+            if (stageNo >= stageLimit - 1)
             {
-                stageNo = stageLimit;
+                stageNo = stageLimit - 1;
+            }
+
+            if (stageNo <= 0)
+            {
+                stageNo = 0;
             }
             nextStage = GameObject.Find(stageName[stageNo]);
         }
@@ -81,23 +86,20 @@ public class SelectSceneScipt : MonoBehaviour
                 changeStage = false;
                 SceneManager.LoadScene(stageName[stageNo], LoadSceneMode.Single);
                 Debug.Log("Loaded to " + stageName[stageNo]);
+
+                
             }
         }
 
 
-        if (nowStage != null && nowStage != nextStage)
-        {
-            nowStage.transform.localScale = nowStageSize;
-            nowStage.GetComponent<MeshRenderer>().material = nowStageMaterial;
-        }
-        
+
+        nextStage.GetComponent<Image>().enabled = true;
 
         if (nowStage != nextStage)
         {
-            nextStage.transform.localScale = nextStageSize;
-            nextStage.GetComponent<MeshRenderer>().material = nextStageMaterial;
+            nowStage.GetComponent<Image>().enabled = false;
         }
-            
     }
-
 }
+
+

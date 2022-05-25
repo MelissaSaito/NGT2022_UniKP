@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class SaveLoadScript : MonoBehaviour
 {
-    GameObject Stage1;
+    GameObject Camera;
 
     public string fileName = "StageSaved";
 
@@ -23,13 +23,13 @@ public class SaveLoadScript : MonoBehaviour
 
     void Awake()
     {
-        Stage1 = GameObject.Find("Stage1");
+        Camera = GameObject.Find("Main Camera");
     }
 
     public void Save()
     {
         StageData data = new StageData();
-        data.stageLimit = Stage1.GetComponent<SelectSceneScipt>().stageLimit;
+        data.stageLimit = Camera.GetComponent<SelectSceneScipt>().stageLimit;
 
         XmlSerializer xmlSerializer = new XmlSerializer(typeof(StageData));
 
@@ -44,17 +44,25 @@ public class SaveLoadScript : MonoBehaviour
 
     public void Load()
     {
-        XmlSerializer xmlSerializer = new XmlSerializer(typeof(StageData));
+        if(File.Exists(FullSavePath))
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(StageData));
 
-        FileStream readStream = new FileStream(FullSavePath, FileMode.Open);
+            FileStream readStream = new FileStream(FullSavePath, FileMode.Open);
 
-        StageData loadedData = xmlSerializer.Deserialize(readStream) as StageData;
+            StageData loadedData = xmlSerializer.Deserialize(readStream) as StageData;
 
-        Stage1.GetComponent<SelectSceneScipt>().stageLimit = loadedData.stageLimit;
+            Camera.GetComponent<SelectSceneScipt>().stageLimit = loadedData.stageLimit;
 
-        Debug.Log("File loaded " + FullSavePath);
+            Debug.Log("File loaded " + FullSavePath);
 
-        readStream.Close();
+            readStream.Close();
+        }
+        else
+        {
+            Save();
+        }
+        
     }
 
     [Serializable]
