@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeskGuimmicScript : MonoBehaviour
 {
     private string[] tags = new string[] { "Desk1", "Desk2", "Desk3", "Desk4", "Desk5" };    //タグ検索用配列
     private static int answerCount = 0, moveCount = 0;              //正解カウント, 操作カウント
     private static bool pushFlag = false;       //多重判定制御(ボタン式)
+    private bool miss = false;
+    private bool open = false;
+    private float timer = 0.0f;
+    public Text misstext;
 
     GameObject door;
 
@@ -14,6 +19,7 @@ public class DeskGuimmicScript : MonoBehaviour
     void Start()
     {
         door = GameObject.Find("Door");
+        misstext.text = "";
     }
 
     // Update is called once per frame
@@ -23,6 +29,7 @@ public class DeskGuimmicScript : MonoBehaviour
         if (answerCount == 5)
         {
             door.SetActive(false);
+            open = true;
         }
 
         //リセット
@@ -31,6 +38,22 @@ public class DeskGuimmicScript : MonoBehaviour
             answerCount = 0;
             moveCount = 0;
             Debug.Log("リセット");
+            miss = true;
+            if (!open)
+                misstext.text = "順番が違うようだ…";
+        }
+
+        if(miss)
+        {
+            timer++;
+            if(timer == 180.0f)
+            {
+                misstext.text = "";
+                timer = 0.0f;
+                miss = false;
+
+            }
+
         }
 
         //フラグリセット
