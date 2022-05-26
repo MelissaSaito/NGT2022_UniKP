@@ -50,6 +50,21 @@ public class SceneManagerScript : MonoBehaviour
 
         }
 
+        if (SceneManager.GetActiveScene().name == "Stage2")
+        {
+            //プレイヤーステータスの状態がDEATHの時
+            if (playerState.flag == StateFlags.DEATH)
+            {
+                Debug.Log("死亡");
+                //次のゲームシーンの為に生き返らせる
+                playerState.flag = StateFlags.LIVE;
+                //シーンを変える
+                SceneManager.LoadScene("GameOver");
+
+            }
+
+        }
+
         if (SceneManager.GetActiveScene().name == "GameOver")
         {
             // 処理実行

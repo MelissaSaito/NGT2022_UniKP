@@ -138,11 +138,13 @@ public class RoamingEnemyScript : MonoBehaviour
                 messageScript.eraseTimeFlag = true;
                 //05/02“à‘º’Ç‰Á---------------------------------------------------------------------------
                 //  ”­Œ©‚³‚ê‚½‚çŽ€–S”»’è‚ðPlayerState‚Ö
-                //playerState.flag = StateFlags.DEATH;
+
+                Invoke("DelayScene", 3f);
+             
                 //----------------------------------------------------------------------------------------
                 talk2 = false;
             }
-
+           
         }
     }
     void OnTriggerStay(Collider other)
@@ -159,5 +161,10 @@ public class RoamingEnemyScript : MonoBehaviour
         {
             navMeshAgent.speed = enemySpeed;
         }
+    }
+
+    void DelayScene()
+    {
+        playerState.flag = StateFlags.DEATH;
     }
 }
