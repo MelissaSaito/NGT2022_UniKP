@@ -12,10 +12,13 @@ public class MapScript : MonoBehaviour
     private float countTime = 0.0f;
     [SerializeField] bool timeTrigger = false;
     [SerializeField] bool isTrigger = false;
+    [SerializeField] Text itemText;
+    private float timer = 0.0f;
 
     void Start()
     {
         mapImage.enabled = false;
+        itemText.text = "";
     }
 
     
@@ -48,8 +51,14 @@ public class MapScript : MonoBehaviour
                     Debug.Log("何もなかった");
                 }
             }
+
+            //テキストタイマ
+            timer++;
+            if (timer == 180.0f)
+                itemText.text = "";
         }
     }
+
 
     
 
@@ -60,6 +69,7 @@ public class MapScript : MonoBehaviour
             if (Input.GetButton("ControllerA") || Input.GetKey(KeyCode.E))
             {
                 Debug.Log("マップを見つけた");
+                itemText.text = "マップを見つけた";
 
                 other.gameObject.tag = "Drawer";
                 mapFunction = true;
