@@ -17,6 +17,8 @@ public class GuimmicScript : MonoBehaviour
 
     bool hadMap;
 
+    public AudioClip sound1;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,9 @@ public class GuimmicScript : MonoBehaviour
         playerMapScript = player.GetComponent<MapScript>();
 
         hadMap = false;
+
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,16 +42,25 @@ public class GuimmicScript : MonoBehaviour
 
         if (Input.GetButtonDown("ControllerA") && startShortCut == true)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
+
             ButtonClick1();
         }
 
         if (Input.GetButtonDown("ControllerLTrigger") && startShortCut == true)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
+
             ButtonClick2();
         }
 
         if (Input.GetButtonDown("Back") && startShortCut == true)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
+
             ButtonClick3();
         }
 
@@ -56,21 +70,34 @@ public class GuimmicScript : MonoBehaviour
             {
                 return;
             }
+
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
+
             ButtonClick5();
         }
 
         if (Input.GetButtonDown("ControllerX") && startShortCut == true)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
+
             ButtonClick7();
         }
 
         if (Input.GetButtonDown("ControllerB") && startShortCut == true)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
+
             ButtonClick8();
         }
 
         if (Input.GetButtonDown("Enter") && startShortCut == true)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
+
             ButtonClick9();
         }
 
