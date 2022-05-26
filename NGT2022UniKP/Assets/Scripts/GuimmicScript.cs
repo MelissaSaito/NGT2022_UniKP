@@ -17,6 +17,9 @@ public class GuimmicScript : MonoBehaviour
 
     bool hadMap;
 
+    public AudioClip sound1;
+    public AudioClip sound2;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,9 @@ public class GuimmicScript : MonoBehaviour
         playerMapScript = player.GetComponent<MapScript>();
 
         hadMap = false;
+
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,16 +44,22 @@ public class GuimmicScript : MonoBehaviour
         if (Input.GetButtonDown("ControllerA") && startShortCut == true)
         {
             ButtonClick1();
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
         }
 
         if (Input.GetButtonDown("ControllerLTrigger") && startShortCut == true)
         {
             ButtonClick2();
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
         }
 
         if (Input.GetButtonDown("Back") && startShortCut == true)
         {
             ButtonClick3();
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
         }
 
         if (Input.GetButtonDown("ControllerY") && startShortCut == true)
@@ -57,24 +69,33 @@ public class GuimmicScript : MonoBehaviour
                 return;
             }
             ButtonClick5();
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
         }
 
         if (Input.GetButtonDown("ControllerX") && startShortCut == true)
         {
             ButtonClick7();
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
         }
 
         if (Input.GetButtonDown("ControllerB") && startShortCut == true)
         {
             ButtonClick8();
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
         }
 
         if (Input.GetButtonDown("Enter") && startShortCut == true)
         {
             ButtonClick9();
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
         }
 
         Open();
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -263,11 +284,15 @@ public class GuimmicScript : MonoBehaviour
     {
         if (use1 == true && use2 == true && use3 == true && use4 == false && use5 == true && use6 == false && use7 == true && use8 == true && use9 == true)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound2);
             GameObject obj = GameObject.Find("ShortcutObject");
             GameObject shortcutButton = GameObject.Find("Shortcut");
             obj.SetActive(false);
             shortcutButton.SetActive(false);
             use1 = false;
+            
         }
+       
     }
 }

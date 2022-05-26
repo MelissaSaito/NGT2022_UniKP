@@ -13,9 +13,14 @@ public class MapScript : MonoBehaviour
     [SerializeField] bool timeTrigger = false;
     [SerializeField] bool isTrigger = false;
 
+    public AudioClip sound1;
+    AudioSource audioSource;
+
     void Start()
     {
         mapImage.enabled = false;
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
 
     
@@ -63,6 +68,8 @@ public class MapScript : MonoBehaviour
 
                 other.gameObject.tag = "Drawer";
                 mapFunction = true;
+                //‰¹(sound1)‚ð–Â‚ç‚·
+                audioSource.PlayOneShot(sound1);
             }
         }
 

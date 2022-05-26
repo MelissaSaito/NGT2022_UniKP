@@ -29,6 +29,10 @@ public class SelectSceneScipt : MonoBehaviour
     [SerializeField] public int stageLimit;
 
 
+    public AudioClip sound1;
+    AudioSource audioSource;
+
+
     void Start()
     {
         stageLimit = 4;
@@ -42,6 +46,9 @@ public class SelectSceneScipt : MonoBehaviour
 
         saveLoadScript = saveLoadObject.GetComponent<SaveLoadScript>();
         saveLoadScript.Save();
+
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -51,27 +58,36 @@ public class SelectSceneScipt : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetButtonDown("ControllerLTrigger"))
         {
             stageNo--;
-            
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
+
             nowStage = nextStage;
 
             if (stageNo <= 0)
             {
                 stageNo = 0;
+                
             }
             nextStage = GameObject.Find(stageName[stageNo]);
+          
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetButtonDown("ControllerRTrigger"))
         {
             stageNo++;
 
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
+
             nowStage = nextStage;
             
             if (stageNo >= stageLimit)
             {
                 stageNo = stageLimit;
+                
             }
             nextStage = GameObject.Find(stageName[stageNo]);
+           
         }
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("ControllerB"))
@@ -89,6 +105,8 @@ public class SelectSceneScipt : MonoBehaviour
         {
             nowStage.transform.localScale = nowStageSize;
             nowStage.GetComponent<MeshRenderer>().material = nowStageMaterial;
+
+           
         }
         
 
@@ -96,6 +114,7 @@ public class SelectSceneScipt : MonoBehaviour
         {
             nextStage.transform.localScale = nextStageSize;
             nextStage.GetComponent<MeshRenderer>().material = nextStageMaterial;
+           
         }
             
     }
