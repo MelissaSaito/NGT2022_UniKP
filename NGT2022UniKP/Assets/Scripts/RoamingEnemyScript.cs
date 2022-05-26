@@ -41,6 +41,8 @@ public class RoamingEnemyScript : MonoBehaviour
     //05/16“à‘º’Ç‰Á
     public int wayPointNumber;
 
+    public AudioClip sound1;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +56,9 @@ public class RoamingEnemyScript : MonoBehaviour
         player = GameObject.Find("Player");
         playerState = player.GetComponent<PlayerStateScript>();
         //-----------------------------------------------------------------------------
+
+        //Component‚ğæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -70,8 +75,12 @@ public class RoamingEnemyScript : MonoBehaviour
             currentWaypointIndex = wayPointNumber % waypoints.Length;
             // –Ú“I’n‚ğŸ‚ÌêŠ‚Éİ’è
             navMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
+
         }
-        
+
+        //‰¹(sound1)‚ğ–Â‚ç‚·
+        audioSource.PlayOneShot(sound1);
+
     }
     //03/30“à‘º’Ç‰Á-----------------------------------------------------------------------------
 

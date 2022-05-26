@@ -29,6 +29,9 @@ public class SelectSceneScipt : MonoBehaviour
     [SerializeField] public int stageLimit;
 
 
+    public AudioClip sound1;
+    AudioSource audioSource;
+
     void Start()
     {
         stageLimit = 4;
@@ -42,6 +45,9 @@ public class SelectSceneScipt : MonoBehaviour
 
         saveLoadScript = saveLoadObject.GetComponent<SaveLoadScript>();
         saveLoadScript.Save();
+
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -50,6 +56,8 @@ public class SelectSceneScipt : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetButtonDown("ControllerLTrigger"))
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             stageNo--;
             
             nowStage = nextStage;
@@ -57,12 +65,15 @@ public class SelectSceneScipt : MonoBehaviour
             if (stageNo <= 0)
             {
                 stageNo = 0;
+                
             }
             nextStage = GameObject.Find(stageName[stageNo]);
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetButtonDown("ControllerRTrigger"))
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             stageNo++;
 
             nowStage = nextStage;
@@ -70,6 +81,7 @@ public class SelectSceneScipt : MonoBehaviour
             if (stageNo >= stageLimit)
             {
                 stageNo = stageLimit;
+                
             }
             nextStage = GameObject.Find(stageName[stageNo]);
         }
