@@ -551,7 +551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &81399241
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2142,6 +2142,7 @@ MonoBehaviour:
   mapFunction: 0
   timeTrigger: 0
   isTrigger: 0
+  itemText: {fileID: 497565546}
 --- !u!65 &479464277
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3799,6 +3800,7 @@ MonoBehaviour:
   mapFunction: 0
   timeTrigger: 0
   isTrigger: 0
+  itemText: {fileID: 0}
 --- !u!65 &930724522
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6930,6 +6932,7 @@ MonoBehaviour:
   mapFunction: 0
   timeTrigger: 0
   isTrigger: 0
+  itemText: {fileID: 497565546}
 --- !u!23 &1532501849
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9416,6 +9419,7 @@ MonoBehaviour:
   mapFunction: 0
   timeTrigger: 0
   isTrigger: 0
+  itemText: {fileID: 0}
 --- !u!23 &2049412304
 MeshRenderer:
   m_ObjectHideFlags: 0
