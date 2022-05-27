@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerScript : MonoBehaviour
 {
 
@@ -17,6 +18,14 @@ public class PlayerScript : MonoBehaviour
     
     Animator m_Animator;
 
+    //‘–‚ése
+    [SerializeField] AudioClip[] clips;
+    [SerializeField] bool randomizePitch = true;
+    [SerializeField] float pitchRange = 0.1f;
+
+    protected AudioSource audioSource;
+
+
     //GameObject UpperBody;
 
 
@@ -26,11 +35,12 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         //UpperBody = GameObject.Find("UpperBody");
         m_Animator = GetComponent<Animator>();
-
+        audioSource = GetComponents<AudioSource>()[0];
     }
 
     void Update()
     {
+
         m_Animator.SetFloat("Speed", rb.velocity.magnitude);
     }
     void LateUpdate()
@@ -74,4 +84,12 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+
+    public void PlayFootstepSE()
+    {
+        if (randomizePitch)
+            audioSource.pitch = 1.0f + Random.Range(-pitchRange, pitchRange);
+
+        audioSource.PlayOneShot(clips[Random.Range(0, clips.Length)]);
+    }
 }

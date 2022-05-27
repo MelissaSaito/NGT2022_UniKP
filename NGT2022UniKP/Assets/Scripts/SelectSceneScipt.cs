@@ -57,10 +57,13 @@ public class SelectSceneScipt : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetButtonDown("ControllerLTrigger"))
         {
-            //‰¹(sound1)‚ð–Â‚ç‚·
-            audioSource.PlayOneShot(sound1);
-
             stageNo--;
+
+            if (stageNo >= 0)
+            {
+                //‰¹(sound1)‚ð–Â‚ç‚·
+                audioSource.PlayOneShot(sound1);
+            }
 
             nowStage = nextStage;
 
@@ -72,10 +75,7 @@ public class SelectSceneScipt : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetButtonDown("ControllerRTrigger"))
-        {
-            //‰¹(sound1)‚ð–Â‚ç‚·
-            audioSource.PlayOneShot(sound1);
-
+        { 
             stageNo++;
 
             nowStage = nextStage;
@@ -90,6 +90,12 @@ public class SelectSceneScipt : MonoBehaviour
                 stageNo = 0;
             }
             nextStage = GameObject.Find(stageName[stageNo]);
+
+            if (nowStage != nextStage)
+            {
+                //‰¹(sound1)‚ð–Â‚ç‚·
+                audioSource.PlayOneShot(sound1);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("ControllerB"))
