@@ -18,6 +18,7 @@ public class GuimmicScript : MonoBehaviour
     bool hadMap;
 
     public AudioClip sound1;
+    public AudioClip close;
     AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -42,25 +43,18 @@ public class GuimmicScript : MonoBehaviour
 
         if (Input.GetButtonDown("ControllerA") && startShortCut == true)
         {
-            //‰¹(sound1)‚ð–Â‚ç‚·
-            audioSource.PlayOneShot(sound1);
+            
 
             ButtonClick1();
         }
 
         if (Input.GetButtonDown("ControllerLTrigger") && startShortCut == true)
         {
-            //‰¹(sound1)‚ð–Â‚ç‚·
-            audioSource.PlayOneShot(sound1);
-
             ButtonClick2();
         }
 
         if (Input.GetButtonDown("Back") && startShortCut == true)
         {
-            //‰¹(sound1)‚ð–Â‚ç‚·
-            audioSource.PlayOneShot(sound1);
-
             ButtonClick3();
         }
 
@@ -70,34 +64,21 @@ public class GuimmicScript : MonoBehaviour
             {
                 return;
             }
-
-            //‰¹(sound1)‚ð–Â‚ç‚·
-            audioSource.PlayOneShot(sound1);
-
             ButtonClick5();
         }
 
         if (Input.GetButtonDown("ControllerX") && startShortCut == true)
         {
-            //‰¹(sound1)‚ð–Â‚ç‚·
-            audioSource.PlayOneShot(sound1);
-
             ButtonClick7();
         }
 
         if (Input.GetButtonDown("ControllerB") && startShortCut == true)
         {
-            //‰¹(sound1)‚ð–Â‚ç‚·
-            audioSource.PlayOneShot(sound1);
-
             ButtonClick8();
         }
 
         if (Input.GetButtonDown("Enter") && startShortCut == true)
         {
-            //‰¹(sound1)‚ð–Â‚ç‚·
-            audioSource.PlayOneShot(sound1);
-
             ButtonClick9();
         }
 
@@ -139,11 +120,15 @@ public class GuimmicScript : MonoBehaviour
         count1++;
         if(count1 % 2 == 0)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button1.GetComponent<Image>().color = Color.white;
             use1 = false;
         }
         else
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button1.GetComponent<Image>().color = Color.black;
             use1 = true;
         }
@@ -156,11 +141,15 @@ public class GuimmicScript : MonoBehaviour
         count2++;
         if (count2 % 2 == 0)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button2.GetComponent<Image>().color = Color.white;
             use2 = false;
         }
         else
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button2.GetComponent<Image>().color = Color.black;
             use2 = true;
         }
@@ -173,11 +162,15 @@ public class GuimmicScript : MonoBehaviour
         count3++;
         if (count3 % 2 == 0)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button3.GetComponent<Image>().color = Color.white;
             use3 = false;
         }
         else
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button3.GetComponent<Image>().color = Color.black;
             use3 = true;
         }
@@ -190,11 +183,15 @@ public class GuimmicScript : MonoBehaviour
         count4++;
         if (count4 % 2 == 0)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button4.GetComponent<Image>().color = Color.white;
             use4 = false;
         } 
         else
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button4.GetComponent<Image>().color = Color.black;
             use4 = true;
         }
@@ -207,11 +204,15 @@ public class GuimmicScript : MonoBehaviour
         count5++;
         if (count5 % 2 == 0)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button5.GetComponent<Image>().color = Color.white;
             use5 = false;
         }
         else
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button5.GetComponent<Image>().color = Color.black;
             use5 = true;
         }
@@ -224,11 +225,15 @@ public class GuimmicScript : MonoBehaviour
         count6++;
         if (count6 % 2 == 0)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button6.GetComponent<Image>().color = Color.white;
             use6 = false;
         }
         else
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button6.GetComponent<Image>().color = Color.black;
             use6 = true;
         }
@@ -241,11 +246,15 @@ public class GuimmicScript : MonoBehaviour
         count7++;
         if (count7 % 2 == 0)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button7.GetComponent<Image>().color = Color.white;
             use7 = false;
         }
         else
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button7.GetComponent<Image>().color = Color.black;
             use7 = true;
         }
@@ -258,11 +267,15 @@ public class GuimmicScript : MonoBehaviour
         count8++;
         if (count8 % 2 == 0)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button8.GetComponent<Image>().color = Color.white;
             use8 = false;
         }   
         else
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button8.GetComponent<Image>().color = Color.black;
             use8 = true;
         }
@@ -275,11 +288,15 @@ public class GuimmicScript : MonoBehaviour
         count9++;
         if (count9 % 2 == 0)
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button9.GetComponent<Image>().color = Color.white;
             use9 = false;
         }           
         else
         {
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
             button9.GetComponent<Image>().color = Color.black;
             use9 = true;
         }
@@ -290,11 +307,15 @@ public class GuimmicScript : MonoBehaviour
     {
         if (use1 == true && use2 == true && use3 == true && use4 == false && use5 == true && use6 == false && use7 == true && use8 == true && use9 == true)
         {
-            GameObject obj = GameObject.Find("ShortcutObject");
+            GameObject fence = GameObject.Find("fence");
+            GameObject gimmick = GameObject.Find("gimmick");
             GameObject shortcutButton = GameObject.Find("Shortcut");
-            obj.SetActive(false);
+            fence.SetActive(false);
+            gimmick.SetActive(false);
             shortcutButton.SetActive(false);
             use1 = false;
+            ////‰¹(close)‚ð–Â‚ç‚·
+            //audioSource.PlayOneShot(close);
         }
     }
 }

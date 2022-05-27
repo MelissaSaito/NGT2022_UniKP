@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 282205918}
   - component: {fileID: 282205917}
   m_Layer: 0
-  m_Name: Video Player(select scene)
+  m_Name: SelectScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282205916}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: a42e1bb12f033dd499203218a36bdc66, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 5210fb4c2ca2cf348b2feecbc9314926, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 627888827}
@@ -169,10 +169,10 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
-  m_Looping: 1
-  m_WaitForFirstFrame: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
 --- !u!4 &282205918

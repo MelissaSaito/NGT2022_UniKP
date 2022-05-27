@@ -24,7 +24,7 @@ public class GameClearScript : MonoBehaviour
 
     void Start()
     {
-        tresureBox = GameObject.Find("object_serverhost_20220516").GetComponent<TresureBoxScript>();
+        tresureBox = GameObject.Find("TresureBox").GetComponent<TresureBoxScript>();
         gameClearMessage.enabled = false;
         btnA.gameObject.SetActive(false);
         btnB.gameObject.SetActive(false);
@@ -72,8 +72,8 @@ public class GameClearScript : MonoBehaviour
 
         if (stageFinish == true)
         {
-            float hor = Input.GetAxis("ControllerD-pad/H");
-            //float ver = Input.GetAxis("Vertical2");
+            //float hor = Input.GetAxis("ControllerD-pad/H");
+            float hor = Input.GetAxis("Horizontal2");
 
             if (hor == -1)
             {

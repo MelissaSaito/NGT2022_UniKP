@@ -176,7 +176,7 @@ public class EnemyRayScript : MonoBehaviour
             ForwardToPlayer();
             //K‚ð‰Ÿ‚·‚Æ‰ï˜b‚ªŽó‚¯Žæ‚ê‚é
             //if (Input.GetKeyDown(KeyCode.K))
-            if (Input.GetButtonDown("ControllerRTrigger"))
+            if (Input.GetButtonDown("ControllerRTrigger") || Input.GetKeyDown(KeyCode.K))
 
             {
                 if (talk1 == true)

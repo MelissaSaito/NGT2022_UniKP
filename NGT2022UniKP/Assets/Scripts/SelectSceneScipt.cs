@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using static SaveLoadScript;
 
 public class SelectSceneScipt : MonoBehaviour
 {
     [SerializeField] GameObject nowStage;
     [SerializeField] GameObject nextStage;
+
+    GameObject selectScene;
 
     GameObject saveLoadObject;
     SaveLoadScript saveLoadScript;
@@ -29,6 +32,10 @@ public class SelectSceneScipt : MonoBehaviour
 
     void Start()
     {
+        selectScene = GameObject.Find("SelectScene");
+
+        selectScene.GetComponent<VideoPlayer>().Play();
+
         stageNo = 0;
 
         stageLimit = 0;
