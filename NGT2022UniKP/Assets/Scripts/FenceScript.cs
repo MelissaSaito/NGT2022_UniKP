@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FenceScript : MonoBehaviour
 {
-    public GameObject key;
+    private GameObject key;
+    private KeyScript keyScript;
     Animator Ani_fence_2;
     string state;
 
@@ -12,6 +13,7 @@ public class FenceScript : MonoBehaviour
     private void Start()
     {
         key = GameObject.Find("Key");
+        keyScript = key.GetComponent<KeyScript>();
         Ani_fence_2 = GetComponent<Animator>();
         Ani_fence_2.speed = 0;
     }
@@ -26,6 +28,10 @@ public class FenceScript : MonoBehaviour
     {
         //if (key.GetComponent<KeyScript>().GetKey)
         //{
+        if (keyScript.GetKey == true)
+        {
+
+
             if (other.CompareTag("Player") && Input.GetKey(KeyCode.E) || Input.GetButton("ControllerA"))
             //if (other.CompareTag("Player") && Input.GetButton("ControllerA"))
             {
@@ -38,7 +44,8 @@ public class FenceScript : MonoBehaviour
 
                 Ani_fence_2.SetBool(state, true);
             }
-        //}
+            //}
+        }
     }
 }
 
