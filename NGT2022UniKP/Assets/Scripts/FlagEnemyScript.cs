@@ -162,8 +162,8 @@ public class FlagEnemyScript : MonoBehaviour
         {
             ForwardToPlayer();
             //K‚ð‰Ÿ‚·‚Æ‰ï˜b‚ªŽó‚¯Žæ‚ê‚é
-            //if (Input.GetKeyDown(KeyCode.K))
-            if (Input.GetButtonDown("ControllerRTrigger"))
+            if (Input.GetKeyDown(KeyCode.K))
+            //if (Input.GetButtonDown("ControllerRTrigger"))
 
             {
                 if (talk1 == true)
