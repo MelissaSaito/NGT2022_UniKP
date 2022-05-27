@@ -5982,6 +5982,38 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2864855003646714990, guid: eaf94e6e77a82a84282796c7c763990b, type: 3}
   m_PrefabInstance: {fileID: 1696806126}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1210527542
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210527541}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 932879fabe854ad4a90cf72d5fe97063, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1210527544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210527541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0ad47db83b17c4792a90ba87926561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: {fileID: 62533097}
 --- !u!64 &1210527545
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5996,6 +6028,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 173995977837860340, guid: eaf94e6e77a82a84282796c7c763990b, type: 3}
+--- !u!65 &1210527546
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210527541}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 130, z: 30}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1226841697
 GameObject:
   m_ObjectHideFlags: 0
@@ -7484,6 +7529,14 @@ PrefabInstance:
     - target: {fileID: -337709624755986108, guid: eaf94e6e77a82a84282796c7c763990b, type: 3}
       propertyPath: m_TagString
       value: Stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 316497613086633052, guid: eaf94e6e77a82a84282796c7c763990b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5284338
+      objectReference: {fileID: 0}
+    - target: {fileID: 316497613086633052, guid: eaf94e6e77a82a84282796c7c763990b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.119205
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eaf94e6e77a82a84282796c7c763990b, type: 3}
       propertyPath: m_Name
