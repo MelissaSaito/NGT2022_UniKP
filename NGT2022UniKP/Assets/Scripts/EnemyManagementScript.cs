@@ -30,8 +30,8 @@ public class EnemyManagementScript : MonoBehaviour
 
         enemyMesh = GetComponent<MeshRenderer>();
 
-        // マテリアルの変更するパラメータを事前に知らせる
-        enemyMesh.material.EnableKeyword("_EMISSION");
+        //// マテリアルの変更するパラメータを事前に知らせる
+        //enemyMesh.material.EnableKeyword("_EMISSION");
 
 
     }

@@ -30,16 +30,16 @@ public class PlayerLockScript : MonoBehaviour
  
 
         //ロックオン状態がtrueの時
-        if (lockOnSystem.getIsLockOn())
-        {
-            //ターゲットオブジェクトのChangeMaterial関数を使用
-            target.SendMessage("ChangeMaterial");
-            Debug.Log("ロックオン中");
-            flash = true;
-        }
-        else
-        {
-        }
+        //if (lockOnSystem.getIsLockOn())
+        //{
+        //    //ターゲットオブジェクトのChangeMaterial関数を使用
+        //    target.SendMessage("ChangeMaterial");
+        //    Debug.Log("ロックオン中");
+        //    flash = true;
+        //}
+        //else
+        //{
+        //}
     }
 
     //フラッシュで見つからなくなるやつ

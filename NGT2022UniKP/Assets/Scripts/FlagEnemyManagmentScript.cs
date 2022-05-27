@@ -9,7 +9,7 @@ public class FlagEnemyManagmentScript : MonoBehaviour
     RoamingEnemyScript roamingEnemyScript1;
     RoamingEnemyScript roamingEnemyScript2;
 
-
+    GameObject flagEnemy;
     GameObject flagEnemy1;
     GameObject flagEnemy1_2;
     GameObject flagEnemy1_3;
@@ -38,12 +38,14 @@ public class FlagEnemyManagmentScript : MonoBehaviour
 
     void Start()
     {
+        flagEnemy = GameObject.Find("FlagEnemy");
+
         flagEnemy1 = GameObject.Find("FlagEnemy1");
         flagEnemy1_2 = GameObject.Find("FlagEnemy1_2");
         flagEnemy1_3 = GameObject.Find("FlagEnemy1_3");
 
         flagEnemy2 = GameObject.Find("FlagEnemy2");
-        flagEnemy2_2 = GameObject.Find("FlagEnemy2_2");
+        //flagEnemy2_2 = GameObject.Find("FlagEnemy2_2");
         flagEnemy2_3 = GameObject.Find("FlagEnemy2_3");
 
 
@@ -56,11 +58,12 @@ public class FlagEnemyManagmentScript : MonoBehaviour
 
         flagEnemyScript = flagEnemy1.GetComponent<FlagEnemyScript>();
         roamingEnemyScript1 = flagEnemy1_2.GetComponent<RoamingEnemyScript>();
-        roamingEnemyScript2 = flagEnemy2_2.GetComponent<RoamingEnemyScript>();
+        //roamingEnemyScript2 = flagEnemy2_2.GetComponent<RoamingEnemyScript>();
+        flagEnemy.SetActive(true);
 
         flagEnemy1.SetActive(true);
         flagEnemy2.SetActive(true);
-        flagEnemy2_2.SetActive(false);
+        //flagEnemy2_2.SetActive(false);
         flagEnemy2_3.SetActive(false);
         flagEnemy1_2.SetActive(false);
         flagEnemy1_3.SetActive(false);
@@ -76,10 +79,11 @@ public class FlagEnemyManagmentScript : MonoBehaviour
         //聞き耳でエネミーが動き始めるやつ
         if (flagEnemyScript.moveEnemyFlag == true)
         {
-            flagEnemy1.SetActive(false);
+            flagEnemy.SetActive(false);
             flagEnemy2.SetActive(false);
             flagEnemy1_2.SetActive(true);
-            flagEnemy2_2.SetActive(true);
+            //flagEnemy2_2.SetActive(true);
+            flagEnemy2_3.SetActive(true);
 
         }
         else
@@ -89,11 +93,11 @@ public class FlagEnemyManagmentScript : MonoBehaviour
         }
 
         //フラグエネミー２がベッドに着いたらうごくのきえて寝てるの出る
-        if (roamingEnemyScript2.wayPointNumber >= 5)
-        {
-            flagEnemy2_2.SetActive(false);
-            flagEnemy2_3.SetActive(true);
-        }
+        //if (roamingEnemyScript2.wayPointNumber >= 5)
+        //{
+        //    //flagEnemy2_2.SetActive(false);
+        //    //flagEnemy2_3.SetActive(true);
+        //}
         if (roamingEnemyScript1.wayPointNumber >= 2)
         {
             flagEnemy1_2.SetActive(false);
