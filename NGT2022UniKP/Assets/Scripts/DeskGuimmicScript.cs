@@ -15,11 +15,16 @@ public class DeskGuimmicScript : MonoBehaviour
 
     GameObject door;
 
+    public AudioClip sound1;
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         door = GameObject.Find("Door");
         misstext.text = "";
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -74,6 +79,9 @@ public class DeskGuimmicScript : MonoBehaviour
             {
                 if (pushFlag == false)
                 {
+                    //‰¹(sound1)‚ð–Â‚ç‚·
+                    audioSource.PlayOneShot(sound1);
+
                     Debug.Log("Desk1‚ð‰Ÿ‚µ‚½");
                     pushFlag = true;
 
@@ -102,6 +110,9 @@ public class DeskGuimmicScript : MonoBehaviour
             {
                 if (pushFlag == false)
                 {
+                    //‰¹(sound1)‚ð–Â‚ç‚·
+                    audioSource.PlayOneShot(sound1);
+
                     Debug.Log("Desk2‚ð‰Ÿ‚µ‚½");
                     pushFlag = true;
 
@@ -128,6 +139,9 @@ public class DeskGuimmicScript : MonoBehaviour
             {
                 if (pushFlag == false)
                 {
+                    //‰¹(sound1)‚ð–Â‚ç‚·
+                    audioSource.PlayOneShot(sound1);
+
                     Debug.Log("Desk3‚ð‰Ÿ‚µ‚½");
                     pushFlag = true;
                     
@@ -154,6 +168,9 @@ public class DeskGuimmicScript : MonoBehaviour
             {
                 if (pushFlag == false)
                 {
+                    //‰¹(sound1)‚ð–Â‚ç‚·
+                    audioSource.PlayOneShot(sound1);
+
                     Debug.Log("Desk4‚ð‰Ÿ‚µ‚½");
                     pushFlag = true;
                     
@@ -178,8 +195,12 @@ public class DeskGuimmicScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) || Input.GetButton("ControllerA"))
             {
+
                 if (pushFlag == false)
                 {
+                    //‰¹(sound1)‚ð–Â‚ç‚·
+                    audioSource.PlayOneShot(sound1);
+
                     Debug.Log("Desk5‚ð‰Ÿ‚µ‚½");
                     pushFlag = true;
                     
