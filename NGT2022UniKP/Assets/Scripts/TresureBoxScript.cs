@@ -11,9 +11,16 @@ public class TresureBoxScript : MonoBehaviour
 
     public string  sceneName;
 
+    public AudioClip sound1;
+    AudioSource audioSource;
+
+
     void Start()
     {
         sceneName = SceneManager.GetActiveScene().name;
+
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -26,6 +33,9 @@ public class TresureBoxScript : MonoBehaviour
             }
 
 
+            //‰¹(sound1)‚ð–Â‚ç‚·
+            audioSource.PlayOneShot(sound1);
+
             GameClear = true;
 
             picked = true;
@@ -37,6 +47,7 @@ public class TresureBoxScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             pickUp = true;
+
         }
         
     }
