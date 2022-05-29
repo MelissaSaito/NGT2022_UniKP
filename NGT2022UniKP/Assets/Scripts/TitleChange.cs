@@ -37,6 +37,13 @@ public class TitleChange : MonoBehaviour
 
     [SerializeField] int selectNum = 0;
 
+    //SE
+    [SerializeField] AudioClip select;
+    [SerializeField] AudioClip enter;
+
+    //ˆê‰ñ‚¾‚¯ƒKƒ‰ƒXSE
+    static bool selectMusic = false;
+    static bool enterMusic = false;
     void Start()
     {
         titleVideo1 = GameObject.Find("title(1)");
@@ -80,9 +87,11 @@ public class TitleChange : MonoBehaviour
 
         if(locks == true && changeScene == true)
         {
+
             titleVideoPlayer2.enabled = false;
             transitionVideoPlayer.enabled = true;
             transitionVideoPlayer.Play();
+            
         }
 
         if (selectScene == true)
@@ -95,8 +104,15 @@ public class TitleChange : MonoBehaviour
                 Startbutton.GetComponent<Image>().enabled = true;
             }
 
-            if (ver == -1)
+            if (ver == -1 || Input.GetKeyDown(KeyCode.DownArrow))
             {
+                selectMusic = true;
+                if (selectMusic == true)
+                {
+                    selectMusic = false;
+                    GetComponent<AudioSource>().PlayOneShot(select);
+                }
+
                 selectNum++;
                 if (selectNum > 1)
                 {
@@ -108,8 +124,14 @@ public class TitleChange : MonoBehaviour
 
             }
 
-            if (ver == 1)
+            if (ver == 1 || Input.GetKeyDown(KeyCode.UpArrow))
             {
+                selectMusic = true;
+                if (selectMusic == true)
+                {
+                    selectMusic = false;
+                    GetComponent<AudioSource>().PlayOneShot(select);
+                }
                 selectNum--;
                 if (selectNum < 0)
                 {
@@ -121,6 +143,12 @@ public class TitleChange : MonoBehaviour
 
             if (selectNum == 0 && (Input.GetButtonDown("ControllerB") || Input.GetKeyDown(KeyCode.Return)))
             {
+                enterMusic = true;
+                if (enterMusic == true)
+                {
+                    enterMusic = false;
+                    GetComponent<AudioSource>().PlayOneShot(enter);
+                }
                 titleVideoPlayer3.Stop();
                 titleVideoPlayer3.enabled = false;
                 finalScene = true;
@@ -128,6 +156,12 @@ public class TitleChange : MonoBehaviour
 
             if (selectNum == 1 && (Input.GetButtonDown("ControllerB") || Input.GetKeyDown(KeyCode.Return)))
             {
+                enterMusic = true;
+                if (enterMusic == true)
+                {
+                    enterMusic = false;
+                    GetComponent<AudioSource>().PlayOneShot(enter);
+                }
                 Application.Quit();
             }
 

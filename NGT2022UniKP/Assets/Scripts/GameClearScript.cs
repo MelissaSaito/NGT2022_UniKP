@@ -24,7 +24,7 @@ public class GameClearScript : MonoBehaviour
 
     void Start()
     {
-        tresureBox = GameObject.Find("object_serverhost_20220516").GetComponent<TresureBoxScript>();
+        tresureBox = GameObject.Find("TresureBox").GetComponent<TresureBoxScript>();
         gameClearMessage.enabled = false;
         btnA.gameObject.SetActive(false);
         btnB.gameObject.SetActive(false);
@@ -116,7 +116,7 @@ public class GameClearScript : MonoBehaviour
 
     public void Menu()
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        SceneManager.LoadScene("SelectScene", LoadSceneMode.Single);
     }
 
     public void Continue()
