@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LeverScript : MonoBehaviour
 {
     private string[] tags = new string[] { "RightLever" , "LeftLever" , "CenterLever" };    //タグ検索用配列｛右、左、真ん中｝の順
-    /*private static int[] leverLock = new int[] { 0, 0, 0 };*/     //何故かboolうまくいかなかったのでint型で制御(レバー式)
     private static int answerCount = 0, moveCount = 0;              //正解カウント, 操作カウント
     private static bool pushFlag = false;       //多重判定制御(ボタン式)
+    private bool miss = false;
+    private bool open = false;
+    private float timer = 0.0f;
+    public Text misstext;
+
+    public AudioClip sound1;
+    AudioSource audioSource;
 
     GameObject door;
 
@@ -15,6 +22,10 @@ public class LeverScript : MonoBehaviour
     void Start()
     {
         door = GameObject.Find("Door");
+        misstext.text = "";
+
+        //Componentを取得
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,6 +35,19 @@ public class LeverScript : MonoBehaviour
         if(answerCount == 3)
         {
             door.SetActive(false);
+            open = true;
+        }
+
+        if (miss)
+        {
+            timer++;
+            if (timer == 180.0f)
+            {
+                misstext.text = "";
+                timer = 0.0f;
+                miss = false;
+
+            }
         }
 
         //リセット
@@ -31,10 +55,10 @@ public class LeverScript : MonoBehaviour
         {
             answerCount = 0;
             moveCount = 0;
-            //leverLock[0] = 0;
-            //leverLock[1] = 0;
-            //leverLock[2] = 0;
             Debug.Log("リセット");
+            miss = true;
+            if (!open)
+                misstext.text = "順番が違うようだ…";
         }
 
         //フラグリセット
@@ -53,12 +77,12 @@ public class LeverScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) || Input.GetButton("ControllerA"))
             {
-                //if (leverLock[0] == 0)
+                
                 if(pushFlag == false)
                 {
                     Debug.Log("右を押した");
                     pushFlag = true;
-                    //leverLock[0]++;
+                    
 
                     if (answerCount == 1)
                     {
@@ -83,12 +107,12 @@ public class LeverScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) || Input.GetButton("ControllerA"))
             {
-                //if (leverLock[1] == 0)
+                
                 if (pushFlag == false)
                 {
                     Debug.Log("左を押した");
                     pushFlag = true;
-                    //leverLock[1]++;
+                    
 
                     if (answerCount == 2)
                     {
@@ -111,13 +135,12 @@ public class LeverScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) || Input.GetButton("ControllerA"))
             {
-                //if (leverLock[2] == 0)
+                
                 if (pushFlag == false)
                 {
                     Debug.Log("真ん中を押した");
                     pushFlag = true;
-                    //leverLock[2]++;
-
+                    
                     if (answerCount == 0)
                     {
                         answerCount++;
