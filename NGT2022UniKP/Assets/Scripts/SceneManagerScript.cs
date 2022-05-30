@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Video;
 
 public class SceneManagerScript : MonoBehaviour
 {
@@ -24,6 +24,7 @@ public class SceneManagerScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        GetComponent<VideoPlayer>().loopPointReached += GameOver;
 
         if (SceneManager.GetActiveScene().name == "Title")
         {
@@ -58,8 +59,8 @@ public class SceneManagerScript : MonoBehaviour
                 Debug.Log("死亡");
                 //次のゲームシーンの為に生き返らせる
                 playerState.flag = StateFlags.LIVE;
-                //シーンを変える
-                SceneManager.LoadScene("GameOver");
+                GameObject.Find("Panel").SetActive(false);
+                GetComponent<VideoPlayer>().Play();
 
             }
 
@@ -75,5 +76,10 @@ public class SceneManagerScript : MonoBehaviour
             }
         }
 
+    }
+
+    public void GameOver(VideoPlayer vp)
+    {
+        SceneManager.LoadScene("SelectScene");
     }
 }
