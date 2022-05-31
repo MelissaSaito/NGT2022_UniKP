@@ -15,6 +15,11 @@ public class MapScript : MonoBehaviour
     [SerializeField] bool isTrigger = false;
     [SerializeField] public Text itemText;
 
+    [SerializeField] AudioClip mapOpen;
+    [SerializeField] AudioClip mapClose;
+
+    bool mapOpenSe = true;
+
     void Start()
     {
         mapImage.enabled = false;
@@ -29,12 +34,28 @@ public class MapScript : MonoBehaviour
         if (mapFunction == true && Input.GetButtonDown("ControllerY"))
 
         {
+            
+
             if (mapImage.enabled == true)
             {
+                mapOpenSe = true;
+
                 mapImage.enabled = false;
+                if(mapOpenSe == true)
+                {
+                    mapOpenSe = false;
+                    GetComponent<AudioSource>().PlayOneShot(mapClose);
+                }
+                
                 return;
             }
             mapImage.enabled = true;
+            if(mapOpenSe == true)
+            {
+                mapOpenSe = false;
+                GetComponent<AudioSource>().PlayOneShot(mapOpen);
+            }
+            
         }
 
         if (mapFunction == true)
