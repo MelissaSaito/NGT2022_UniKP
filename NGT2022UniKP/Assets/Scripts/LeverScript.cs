@@ -77,7 +77,8 @@ public class LeverScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) || Input.GetButton("ControllerA"))
             {
-                
+                audioSource.PlayOneShot(sound1);
+
                 if(pushFlag == false)
                 {
                     Debug.Log("âEÇâüÇµÇΩ");
@@ -107,7 +108,8 @@ public class LeverScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) || Input.GetButton("ControllerA"))
             {
-                
+                audioSource.PlayOneShot(sound1);
+
                 if (pushFlag == false)
                 {
                     Debug.Log("ç∂ÇâüÇµÇΩ");
@@ -135,7 +137,8 @@ public class LeverScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) || Input.GetButton("ControllerA"))
             {
-                
+                audioSource.PlayOneShot(sound1);
+
                 if (pushFlag == false)
                 {
                     Debug.Log("ê^ÇÒíÜÇâüÇµÇΩ");
