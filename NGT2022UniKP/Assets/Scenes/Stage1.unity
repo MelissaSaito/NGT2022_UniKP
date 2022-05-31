@@ -2269,7 +2269,8 @@ MonoBehaviour:
   btnA: {fileID: 1109954857}
   btnB: {fileID: 1656505022}
   selectNum: 0
-  stageNo: 0
+  stageNo: 2
+  loadStageNo: 0
 --- !u!65 &570868545
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7840,7 +7841,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584377012}
-  m_LocalRotation: {x: 0.0043903566, y: 0.99186665, z: -0.1221044, w: 0.035663318}
+  m_LocalRotation: {x: 0.004390353, y: 0.99186665, z: -0.122104384, w: 0.03566329}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8443,6 +8444,7 @@ MonoBehaviour:
   btnB: {fileID: 474419081}
   selectNum: 0
   stageNo: 2
+  loadStageNo: 0
 --- !u!64 &1799861767
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9508,6 +9510,7 @@ MonoBehaviour:
   btnB: {fileID: 474419081}
   selectNum: 0
   stageNo: 0
+  loadStageNo: 0
 --- !u!65 &1993861994
 BoxCollider:
   m_ObjectHideFlags: 0
