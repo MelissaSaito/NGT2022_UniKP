@@ -102,7 +102,8 @@ public class EnemyRayScript : MonoBehaviour
                 //}
                 //05/03í«â¡ì‡ë∫
                 //ÉvÉåÉCÉÑÅ[ÇÃèÛë‘ÇDEATHÇ÷--------------------------
-                //playerState.flag = StateFlags.DEATH;
+                Invoke("DelayScene", 3f);
+
                 //---------------------------------------------------
             }
             else
@@ -218,6 +219,9 @@ public class EnemyRayScript : MonoBehaviour
 
     }
 
-
+    void DelayScene()
+    {
+        playerState.flag = StateFlags.DEATH;
+    }
 }
 
