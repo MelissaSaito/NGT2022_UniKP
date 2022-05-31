@@ -15,8 +15,8 @@ public class EnemyRayScript : MonoBehaviour
     public string[] message1;// 表示させるメッセージ
     public string[] message2;// 表示させるメッセージ
 
-    private bool talk1 = true;
-    private bool talk2 = true;
+    [SerializeField] private bool talk1;
+    [SerializeField] private bool talk2;
 
 
     [Header("Ray")]
@@ -41,10 +41,13 @@ public class EnemyRayScript : MonoBehaviour
     [SerializeField] PlayerStateScript playerState;
     //----------------------------------------------------------------
 
+    [SerializeField]private bool kikimimi = false;
 
 
     void Start()
     {
+        talk1 = true;
+        talk2 = true;
         //05/02内村追加----------------------------------------------------
         player = GameObject.Find("Player");
         playerState = player.GetComponent<PlayerStateScript>();
@@ -53,7 +56,7 @@ public class EnemyRayScript : MonoBehaviour
     //--------------------------------------------------------------
 
     //enemyからplayerまで光線を出す
-    private void FixedUpdate()
+    private void Update()
     {
 
         //会話消去機能----------------------------------------------------
@@ -69,10 +72,15 @@ public class EnemyRayScript : MonoBehaviour
             //Debug.Log("消去フラグがたった");
             //messageScript.eraseFlag = true;
             EraseTalk();
+            //talk1 = true;
             messageScript.eraseTimeFlag = false;
             messageScript.displayTime = 0.0f;
+            //messageText.text = "";// 文字を空白にする
+            //StartCoroutine("Message", message3);
+            
+
         }
-               //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
 
 
         //enemy正面のベクトル
@@ -95,6 +103,7 @@ public class EnemyRayScript : MonoBehaviour
                         messageScript.talkflag = true;
                         talk2 = false;
                     }
+
                 //}
                 //else
                 //{
@@ -122,24 +131,52 @@ public class EnemyRayScript : MonoBehaviour
             Debug.DrawRay(transform.position, enemyForward * rayDistance, Color.red);
         }
 
+        if (kikimimi == true)
+        {
+            ForwardToPlayer();
+            //Kを押すと会話が受け取れる
+            //if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetButtonDown("ControllerRTrigger") || Input.GetKeyDown(KeyCode.K))
 
+            {
+                EraseTalk();
 
-        //
+                if (talk1 == true)
+                {
+                    Debug.Log("奥の部屋はちゃんと守られているだろうか");
+                    StartCoroutine("Message", message1);// Messageコルーチンを実行する
+                    messageScript.talkflag = true;
+                    messageScript.eraseTimeFlag = true;
+                    
+                }
+                else
+                {
+
+                    if (messageScript.displayTime >= 20.0f)
+                    {
+                        EraseTalk();
+                        messageScript.eraseTimeFlag = false;
+                        messageScript.displayTime = 0.0f;
+
+                    }
+                    messageScript.talkflag = false;
+                }
+                
+            }
+
+        }
     }
 
     void EraseTalk()
     {
-        if (talk1 == false)
-        {
-            talk1 = true;
-        }
-        if (talk2 == false)
-        {
-            talk2 = true;
-        }
+
+        talk1 = true;
+        talk2 = true;
 
         Debug.Log("消去しました");
         messageScript.messageText.text = "";
+        //messageScript.conversation = null;
+        //StartCoroutine("");
         messageScript.eraseFlag = false;
 
     }
@@ -174,40 +211,20 @@ public class EnemyRayScript : MonoBehaviour
 
         if (other.gameObject.tag == ("Player") && isFounded == false)
         {
-            ForwardToPlayer();
-            //Kを押すと会話が受け取れる
-            //if (Input.GetKeyDown(KeyCode.K))
-            if (Input.GetButtonDown("ControllerRTrigger") || Input.GetKeyDown(KeyCode.K))
 
-            {
-                if (talk1 == true)
-                {
-                    Debug.Log("奥の部屋はちゃんと守られているだろうか");
-                    StartCoroutine("Message", message1);// Messageコルーチンを実行する
-                    messageScript.talkflag = true;
-                    messageScript.eraseTimeFlag = true;
-
-                    talk1 = false;
-                }
-                else
-                {
-                    if (messageScript.displayTime >= 20.0f)
-                    {
-                        EraseTalk();
-                        messageScript.eraseTimeFlag = false;
-                        messageScript.displayTime = 0.0f;
-
-                    }
-                    messageScript.talkflag = false;
-                }
-            }
+            kikimimi = true;
         }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        isTrigger = false;
+        if (other.gameObject.tag == ("Player"))
+        {
+            isTrigger = false;
+            kikimimi = false;
+        }
+            
     }
 
     IEnumerator Message(string[] Conversation)// Messageコルーチン 
