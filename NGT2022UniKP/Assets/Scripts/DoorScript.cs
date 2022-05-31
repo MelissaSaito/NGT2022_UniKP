@@ -8,6 +8,8 @@ public class DoorScript : MonoBehaviour
     Animator Ani_Door;
     string state;
 
+    [SerializeField] AudioClip door;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -38,6 +40,7 @@ public class DoorScript : MonoBehaviour
                 }
 
                 Ani_Door.SetBool(state, true);
+                GetComponent<AudioSource>().PlayOneShot(door);
             }
         }
     }
