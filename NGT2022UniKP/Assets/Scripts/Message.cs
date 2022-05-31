@@ -7,7 +7,7 @@ public class Message : MonoBehaviour
 {
     public bool isActive;// Canvasの表示非表示
     public GameObject canvas;// 使用するCanvas
-    public Text messageText;// メッセージを表示する文字
+    [SerializeField] public Text messageText;// メッセージを表示する文字
     private string message;// 表示するメッセージ
     [SerializeField]
     private int maxTextLength = 90;// 1回のメッセージの最大文字数
@@ -24,14 +24,14 @@ public class Message : MonoBehaviour
     private float clickFlashTime = 0.2f;// クリックアイコンの点滅秒数
     private bool isOneMessage = false;// 1回分のメッセージを表示したかどうか
     private bool isEndMessage = false;// メッセージをすべて表示したかどうか
-    private string[] conversation;// 会話
+    public string[] conversation;// 会話
     private int i = 0;// 文字列の列
     private int stringsCount = 0;// 文字列の総行数
 
     public bool talkflag = false;//会話フラグ
     public float displayTime = 0.0f;
     public bool eraseFlag = false;
-    public bool eraseTimeFlag = false;
+    [SerializeField]public bool eraseTimeFlag = false;
 
     public bool deathFlag = false;  //死んだ時の判定
     public float deathTime = 0.0f;    //死んだ後の残り時間
@@ -131,13 +131,17 @@ public class Message : MonoBehaviour
 
     void SetMessage(string message)// SetMessage
     {
-        this.message = message + "\n";// このオブジェクトのmessageをmessageにする
+        this.message = message      ;// このオブジェクトのmessageをmessageにする
     }
 
     public void SetMessagePanel(string[] message)// SetMessagePanel
     {
+        //messageText.text = "";// 文字を空白にする
+        
         i = 0;// iを0にする
         stringsCount = message.Length;// 文字列の総行数をmessageの要素数にする
+        //conversation = null;
+        //StartCoroutine("");
         conversation = message;// coversationをmessageにする
         canvas.SetActive(true);// キャンバスを表示する
         SetMessage(conversation[0]);// SetMessageを実行する
