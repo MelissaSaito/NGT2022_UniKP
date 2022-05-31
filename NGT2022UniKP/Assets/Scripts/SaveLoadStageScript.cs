@@ -43,6 +43,26 @@ public class SaveLoadStageScript : MonoBehaviour
         fs.Close();
     }
 
+    //public void Load()
+    //{
+    //    if (File.Exists(FullSavePath))
+    //    {
+    //        XmlSerializer xmlSerializer = new XmlSerializer(typeof(StageData));
+
+    //        FileStream readStream = new FileStream(FullSavePath, FileMode.Open);
+
+    //        StageData loadedData = xmlSerializer.Deserialize(readStream) as StageData;
+
+    //        Camera.GetComponent<SelectSceneScipt>().stageLimit = loadedData.stageLimit;
+
+    //        Debug.Log("File loaded " + FullSavePath);
+
+    //        readStream.Close();
+    //    }
+        
+
+    //}
+
     [Serializable]
     public class StageData
     {

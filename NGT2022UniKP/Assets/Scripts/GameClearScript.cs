@@ -22,6 +22,8 @@ public class GameClearScript : MonoBehaviour
 
     [SerializeField] public int stageNo;
 
+    public int loadStageNo;
+
     void Start()
     {
         tresureBox = GameObject.Find("object_serverhost_20220516").GetComponent<TresureBoxScript>();
